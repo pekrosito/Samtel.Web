@@ -52,7 +52,7 @@ module.exports = "<p>home works!</p>\n"
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<p>product-alerts works!</p>\n"
+module.exports = "<p>Lista de usuarios de BD</p>\n<div *ngFor=\"let user of users\">\n    <h1>{{user.nombre}}</h1>\n    <label>{{user.apellido}}</label><br>\n    <label>Nombre Completo {{user.nombre}} - {{user.apellido}}</label><br>\n    <label>Edad {{2019 - user.edad}}</label>\n</div>\n"
 
 /***/ }),
 
@@ -284,7 +284,12 @@ let ProductAlertsComponent = class ProductAlertsComponent {
         this.load();
     }
     load() {
-        this.api.getSinVariable().subscribe(response => { console.log('response', response); }, error => { });
+        this.api.getSinVariable().subscribe(response => {
+            this.users = response.map(users => {
+                users.edad = 1993;
+                return users;
+            });
+        }, error => { console.log("Error"); });
     }
 };
 ProductAlertsComponent.ctorParameters = () => [

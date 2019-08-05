@@ -52,7 +52,7 @@ module.exports = "<p>home works!</p>\n"
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<p>product-alerts works!</p>\n"
+module.exports = "<p>Lista de usuarios de BD</p>\n<div *ngFor=\"let user of users\">\n    <h1>{{user.nombre}}</h1>\n    <label>{{user.apellido}}</label><br>\n    <label>Nombre Completo {{user.nombre}} - {{user.apellido}}</label><br>\n    <label>Edad {{2019 - user.edad}}</label>\n</div>\n"
 
 /***/ }),
 
@@ -294,7 +294,13 @@ var ProductAlertsComponent = /** @class */ (function () {
         this.load();
     };
     ProductAlertsComponent.prototype.load = function () {
-        this.api.getSinVariable().subscribe(function (response) { console.log('response', response); }, function (error) { });
+        var _this = this;
+        this.api.getSinVariable().subscribe(function (response) {
+            _this.users = response.map(function (users) {
+                users.edad = 1993;
+                return users;
+            });
+        }, function (error) { console.log("Error"); });
     };
     ProductAlertsComponent.ctorParameters = function () { return [
         { type: _core_user_service__WEBPACK_IMPORTED_MODULE_2__["UserService"] }

@@ -7,6 +7,7 @@ import { UserService } from './../core/user.service';
   styles: []
 })
 export class ProductAlertsComponent implements OnInit {
+  users;
 
   constructor(private api: UserService) { }
 
@@ -16,8 +17,11 @@ export class ProductAlertsComponent implements OnInit {
 
   load() {
     this.api.getSinVariable().subscribe(
-      response => {console.log('response',response);},
-      error => {}
+      response => { this.users = response.map(users => {
+        users.edad = 1993;
+        return users;
+      }); },
+      error => { console.log("Error")}
     )
   }
 
