@@ -41,7 +41,7 @@ module.exports = "<ul>\r\n  <li>\r\n    <h2><a routerLink=\"/products\">Angular 
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<p>home works!</p>\n"
+module.exports = "<p>home works!</p>\r\n"
 
 /***/ }),
 
@@ -52,7 +52,7 @@ module.exports = "<p>home works!</p>\n"
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<p>Lista de usuarios de BD</p>\n<div *ngFor=\"let user of users\">\n    <h1>{{user.nombre}}</h1>\n    <label>{{user.apellido}}</label><br>\n    <label>Nombre Completo {{user.nombre}} - {{user.apellido}}</label><br>\n    <label>Edad {{2019 - user.edad}}</label>\n</div>\n"
+module.exports = "<p>Lista de usuarios de BD</p>\r\n<div *ngFor=\"let user of users\">\r\n    <h1>{{user.nombre}}</h1>\r\n    <label>{{user.apellido}}</label><br>\r\n    <label>Nombre Completo {{user.nombre}} - {{user.apellido}}</label><br>\r\n    <label>Edad {{2019 - user.edad}}</label>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -379,7 +379,7 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_1__["platformB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\pedro.rivera\Projects\Samtel.Web\Samtel.Web\src\main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! C:\Proyecto\Samtel.Web\Samtel.Web\src\main.ts */"./src/main.ts");
 
 
 /***/ })
