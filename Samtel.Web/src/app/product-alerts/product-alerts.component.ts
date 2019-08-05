@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from './../core/user.service';
-import { MatSnackBar } from '@angular/material';
+import { NotificationsService } from './../notifications/notifications.component';
 
 @Component({
   selector: 'app-product-alerts',
@@ -10,7 +10,7 @@ import { MatSnackBar } from '@angular/material';
 export class ProductAlertsComponent implements OnInit {
   users;
 
-  constructor(private api: UserService, public snackBar: MatSnackBar) { }
+  constructor(private api: UserService, public notificationsServices: NotificationsService) { }
 
   ngOnInit() {
     this.load();
@@ -22,11 +22,12 @@ export class ProductAlertsComponent implements OnInit {
         users.edad = 1993;
         return users;
       });
-        this.snackBar.open('Barra de navegación', 'Cerrar', {
-          duration: 2000,
-        })
+        this.notificationsServices.toast("exitoso!");
       },
-      error => { console.log("Error")}
+      error => {
+        console.log("Error");
+        this.notificationsServices.toast("error!");
+      }
     )
   }
 

@@ -147,6 +147,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _home_home_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./home/home.component */ "./src/app/home/home.component.ts");
 /* harmony import */ var _angular_material_snack_bar__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @angular/material/snack-bar */ "./node_modules/@angular/material/esm5/snack-bar.es5.js");
 /* harmony import */ var _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @angular/platform-browser/animations */ "./node_modules/@angular/platform-browser/fesm5/animations.js");
+/* harmony import */ var _notifications_notifications_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./notifications/notifications.component */ "./src/app/notifications/notifications.component.ts");
+
 
 
 
@@ -174,7 +176,9 @@ var AppModule = /** @class */ (function () {
                 _angular_material_snack_bar__WEBPACK_IMPORTED_MODULE_8__["MatSnackBarModule"],
                 _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_9__["BrowserAnimationsModule"]
             ],
-            providers: [],
+            providers: [
+                _notifications_notifications_component__WEBPACK_IMPORTED_MODULE_10__["NotificationsService"]
+            ],
             bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_5__["AppComponent"]]
         })
     ], AppModule);
@@ -276,6 +280,44 @@ var HomeComponent = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/app/notifications/notifications.component.ts":
+/*!**********************************************************!*\
+  !*** ./src/app/notifications/notifications.component.ts ***!
+  \**********************************************************/
+/*! exports provided: NotificationsService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NotificationsService", function() { return NotificationsService; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm5/material.es5.js");
+
+
+
+var NotificationsService = /** @class */ (function () {
+    function NotificationsService(snackBar) {
+        this.snackBar = snackBar;
+    }
+    NotificationsService.prototype.toast = function (message) {
+        this.snackBar.open(message, 'Cerrar', {
+            duration: 2000,
+        });
+    };
+    NotificationsService.ctorParameters = function () { return [
+        { type: _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatSnackBar"] }
+    ]; };
+    NotificationsService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])()
+    ], NotificationsService);
+    return NotificationsService;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/product-alerts/product-alerts.component.ts":
 /*!************************************************************!*\
   !*** ./src/app/product-alerts/product-alerts.component.ts ***!
@@ -289,15 +331,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _core_user_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./../core/user.service */ "./src/app/core/user.service.ts");
-/* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm5/material.es5.js");
+/* harmony import */ var _notifications_notifications_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./../notifications/notifications.component */ "./src/app/notifications/notifications.component.ts");
 
 
 
 
 var ProductAlertsComponent = /** @class */ (function () {
-    function ProductAlertsComponent(api, snackBar) {
+    function ProductAlertsComponent(api, notificationsServices) {
         this.api = api;
-        this.snackBar = snackBar;
+        this.notificationsServices = notificationsServices;
     }
     ProductAlertsComponent.prototype.ngOnInit = function () {
         this.load();
@@ -309,14 +351,15 @@ var ProductAlertsComponent = /** @class */ (function () {
                 users.edad = 1993;
                 return users;
             });
-            _this.snackBar.open('Barra de navegación', 'Cerrar', {
-                duration: 2000,
-            });
-        }, function (error) { console.log("Error"); });
+            _this.notificationsServices.toast("exitoso!");
+        }, function (error) {
+            console.log("Error");
+            _this.notificationsServices.toast("error!");
+        });
     };
     ProductAlertsComponent.ctorParameters = function () { return [
         { type: _core_user_service__WEBPACK_IMPORTED_MODULE_2__["UserService"] },
-        { type: _angular_material__WEBPACK_IMPORTED_MODULE_3__["MatSnackBar"] }
+        { type: _notifications_notifications_component__WEBPACK_IMPORTED_MODULE_3__["NotificationsService"] }
     ]; };
     ProductAlertsComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({

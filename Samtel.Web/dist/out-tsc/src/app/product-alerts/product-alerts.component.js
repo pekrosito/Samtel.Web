@@ -1,9 +1,9 @@
 import * as tslib_1 from "tslib";
 import { Component } from '@angular/core';
 let ProductAlertsComponent = class ProductAlertsComponent {
-    constructor(api, snackBar) {
+    constructor(api, notificationsServices) {
         this.api = api;
-        this.snackBar = snackBar;
+        this.notificationsServices = notificationsServices;
     }
     ngOnInit() {
         this.load();
@@ -14,10 +14,10 @@ let ProductAlertsComponent = class ProductAlertsComponent {
                 users.edad = 1993;
                 return users;
             });
-            this.snackBar.open('Barra de navegación', 'Cerrar', {
-                duration: 2000,
-            });
-        }, error => { console.log("Error"); });
+            this.notificationsServices.toast("exitoso!");
+        }, error => {
+            console.log("Error");
+        });
     }
 };
 ProductAlertsComponent = tslib_1.__decorate([
