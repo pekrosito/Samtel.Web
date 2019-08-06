@@ -1,6 +1,6 @@
 import * as tslib_1 from "tslib";
 import { Component } from '@angular/core';
-let ProductAlertsComponent = class ProductAlertsComponent {
+let FormsComponent = class FormsComponent {
     constructor(api, notificationsServices) {
         this.api = api;
         this.notificationsServices = notificationsServices;
@@ -21,12 +21,12 @@ let ProductAlertsComponent = class ProductAlertsComponent {
         });
     }
 };
-ProductAlertsComponent = tslib_1.__decorate([
+FormsComponent = tslib_1.__decorate([
     Component({
-        selector: 'app-product-alerts',
-        templateUrl: './product-alerts.component.html',
+        selector: 'app-forms',
+        templateUrl: './forms.component.html',
         styles: []
     })
-], ProductAlertsComponent);
-export { ProductAlertsComponent };
-//# sourceMappingURL=product-alerts.component.js.map
+], FormsComponent);
+export { FormsComponent };
+//# sourceMappingURL=forms.component.js.map
