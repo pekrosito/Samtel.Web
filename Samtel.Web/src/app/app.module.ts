@@ -14,6 +14,8 @@ import { NotificationsService } from './notifications/notifications.component';
 import { ControlsComponent } from './controls/controls.component';
 import { TablesComponent } from './tables/tables.component';
 
+import { ReactiveFormsModule } from '@angular/forms';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,7 +30,8 @@ import { TablesComponent } from './tables/tables.component';
     AppRoutingModule,
     HttpClientModule,
     MatSnackBarModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    ReactiveFormsModule
   ],
   providers: [
     NotificationsService

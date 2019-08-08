@@ -52,7 +52,7 @@ module.exports = "<p>controls works!</p>\r\n"
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<form role=\"form\">\r\n  <div class=\"form-group\">\r\n    <label for=\"email\">Email address:</label>\r\n    <input type=\"email\" class=\"form-control\" id=\"email\">\r\n  </div>\r\n  <div class=\"form-group\">\r\n    <label for=\"pwd\">Password:</label>\r\n    <input type=\"password\" class=\"form-control\" id=\"pwd\">\r\n  </div>\r\n  <div class=\"checkbox\">\r\n    <label><input type=\"checkbox\"> Remember me</label>\r\n  </div>\r\n  <button type=\"submit\" class=\"btn btn-default\">Submit</button>\r\n</form>\r\n<form class=\"form-inline\" role=\"form\">\r\n  <div class=\"form-group\">\r\n    <label for=\"email\">Email address:</label>\r\n    <input type=\"email\" class=\"form-control\" id=\"email\">\r\n  </div>\r\n  <div class=\"form-group\">\r\n    <label for=\"pwd\">Password:</label>\r\n    <input type=\"password\" class=\"form-control\" id=\"pwd\">\r\n  </div>\r\n  <div class=\"checkbox\">\r\n    <label><input type=\"checkbox\"> Remember me</label>\r\n  </div>\r\n  <button type=\"submit\" class=\"btn btn-default\">Submit</button>\r\n</form>\r\n"
+module.exports = "\r\n<div class=\"container\">\r\n\r\n      <div class=\"row\">\r\n        <div class=\"col-sm-12 col-md-12 col-lg-12  form-group\">\r\n          <form [formGroup]=\"formPerson\">\r\n            <div class=\"form-group\">\r\n              <label>Nombre</label>\r\n              <input type=\"text\" class=\"form-control\" formControlName=\"nombre\" required>\r\n              <div *ngIf=\"submitted && formPerson.controls.nombre.errors\" class=\"has-error\">\r\n                <div *ngIf=\"formPerson.controls.nombre.errors.required\">Nombre requerido</div>\r\n              </div>\r\n            </div>\r\n            <div class=\"form-group\">\r\n              <label>Apellido</label>\r\n              <input type=\"text\" class=\"form-control\" formControlName=\"apellido\" required>\r\n              <div *ngIf=\"submitted && formPerson.controls.apellido.errors\" class=\"has-error\">\r\n                <div *ngIf=\"formPerson.controls.apellido.errors.required\">Apellido requerido</div>\r\n              </div>\r\n            </div>\r\n          </form>\r\n          <div class=\"col-sm-6\" style=\"text-align: end;\">\r\n            <button type=\"button\" class=\"btn btn-primary\" (click)=\"aceptar()\"\r\n                    [disabled]=\"!formPerson.valid\">Guardar</button>\r\n          </div>\r\n        </div>\r\n      </div>\r\n    \r\n</div>\r\n"
 
 /***/ }),
 
@@ -190,6 +190,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _notifications_notifications_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./notifications/notifications.component */ "./src/app/notifications/notifications.component.ts");
 /* harmony import */ var _controls_controls_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./controls/controls.component */ "./src/app/controls/controls.component.ts");
 /* harmony import */ var _tables_tables_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./tables/tables.component */ "./src/app/tables/tables.component.ts");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
+
 
 
 
@@ -222,7 +224,8 @@ var AppModule = /** @class */ (function () {
                 _app_routing_module__WEBPACK_IMPORTED_MODULE_4__["AppRoutingModule"],
                 _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpClientModule"],
                 _angular_material_snack_bar__WEBPACK_IMPORTED_MODULE_9__["MatSnackBarModule"],
-                _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_10__["BrowserAnimationsModule"]
+                _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_10__["BrowserAnimationsModule"],
+                _angular_forms__WEBPACK_IMPORTED_MODULE_14__["ReactiveFormsModule"]
             ],
             providers: [
                 _notifications_notifications_component__WEBPACK_IMPORTED_MODULE_11__["NotificationsService"]
@@ -313,6 +316,10 @@ var UserService = /** @class */ (function () {
             return rxjs_Observable__WEBPACK_IMPORTED_MODULE_3__["Observable"].throw(err);
         }));
     };
+    UserService.prototype.metodoPutActualizar = function (data) {
+        var url = "" + (this.url + 'metodoPutActualizar');
+        return this.http.put(url, data, httpOptions);
+    };
     UserService.ctorParameters = function () { return [
         { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"] }
     ]; };
@@ -342,34 +349,59 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _core_user_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./../core/user.service */ "./src/app/core/user.service.ts");
 /* harmony import */ var _notifications_notifications_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./../notifications/notifications.component */ "./src/app/notifications/notifications.component.ts");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
+
 
 
 
 
 var FormsComponent = /** @class */ (function () {
-    function FormsComponent(api, notificationsServices) {
+    function FormsComponent(api, notificationsServices, FB) {
         this.api = api;
         this.notificationsServices = notificationsServices;
+        this.FB = FB;
+        this.submitted = false;
     }
     FormsComponent.prototype.ngOnInit = function () {
+        this.loadComponent();
         this.load();
     };
     FormsComponent.prototype.load = function () {
         var _this = this;
         this.api.getSinVariable().subscribe(function (response) {
-            _this.users = response.map(function (users) {
+            response = response.map(function (users) {
                 users.edad = 1993;
                 return users;
             });
+            _this.setData(response);
             _this.notificationsServices.toast("exitoso!");
         }, function (error) {
             console.log("Error");
             _this.notificationsServices.toast("error!");
         });
     };
+    FormsComponent.prototype.loadComponent = function () {
+        this.formPerson = this.FB.group({
+            nombre: new _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormControl"]({ value: '', disable: false }, _angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].required),
+            apellido: new _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormControl"]({ value: '', disable: false }, _angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].required)
+        });
+    };
+    FormsComponent.prototype.aceptar = function () {
+        this.submitted = true;
+        console.log("this.formPerson.invalid", this.formPerson.value);
+        if (this.formPerson.invalid) {
+            return;
+        }
+        this.api.metodoPutActualizar(this.formPerson.value).subscribe(function (response) { console.log("respnse", response); }, function (error) { });
+    };
+    FormsComponent.prototype.setData = function (response) {
+        this.formPerson.get('nombre').setValue(response[0].nombre);
+        this.formPerson.get('apellido').setValue(response[0].apellido);
+    };
     FormsComponent.ctorParameters = function () { return [
         { type: _core_user_service__WEBPACK_IMPORTED_MODULE_2__["UserService"] },
-        { type: _notifications_notifications_component__WEBPACK_IMPORTED_MODULE_3__["NotificationsService"] }
+        { type: _notifications_notifications_component__WEBPACK_IMPORTED_MODULE_3__["NotificationsService"] },
+        { type: _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormBuilder"] }
     ]; };
     FormsComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({

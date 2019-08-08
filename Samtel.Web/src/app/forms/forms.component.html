@@ -1,28 +1,29 @@
-<form role="form">
-  <div class="form-group">
-    <label for="email">Email address:</label>
-    <input type="email" class="form-control" id="email">
-  </div>
-  <div class="form-group">
-    <label for="pwd">Password:</label>
-    <input type="password" class="form-control" id="pwd">
-  </div>
-  <div class="checkbox">
-    <label><input type="checkbox"> Remember me</label>
-  </div>
-  <button type="submit" class="btn btn-default">Submit</button>
-</form>
-<form class="form-inline" role="form">
-  <div class="form-group">
-    <label for="email">Email address:</label>
-    <input type="email" class="form-control" id="email">
-  </div>
-  <div class="form-group">
-    <label for="pwd">Password:</label>
-    <input type="password" class="form-control" id="pwd">
-  </div>
-  <div class="checkbox">
-    <label><input type="checkbox"> Remember me</label>
-  </div>
-  <button type="submit" class="btn btn-default">Submit</button>
-</form>
+
+<div class="container">
+
+      <div class="row">
+        <div class="col-sm-12 col-md-12 col-lg-12  form-group">
+          <form [formGroup]="formPerson">
+            <div class="form-group">
+              <label>Nombre</label>
+              <input type="text" class="form-control" formControlName="nombre" required>
+              <div *ngIf="submitted && formPerson.controls.nombre.errors" class="has-error">
+                <div *ngIf="formPerson.controls.nombre.errors.required">Nombre requerido</div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Apellido</label>
+              <input type="text" class="form-control" formControlName="apellido" required>
+              <div *ngIf="submitted && formPerson.controls.apellido.errors" class="has-error">
+                <div *ngIf="formPerson.controls.apellido.errors.required">Apellido requerido</div>
+              </div>
+            </div>
+          </form>
+          <div class="col-sm-6" style="text-align: end;">
+            <button type="button" class="btn btn-primary" (click)="aceptar()"
+                    [disabled]="!formPerson.valid">Guardar</button>
+          </div>
+        </div>
+      </div>
+    
+</div>
