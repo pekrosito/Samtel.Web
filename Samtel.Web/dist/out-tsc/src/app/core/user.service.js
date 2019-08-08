@@ -5,7 +5,11 @@ import { Observable } from 'rxjs/Observable';
 import { catchError, map } from 'rxjs/operators';
 import { timeout } from 'rxjs/operators';
 const httpOptions = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+    headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': '123456',
+        'X-System': 'Desktop'
+    })
 };
 let UserService = class UserService {
     constructor(http) {
@@ -13,7 +17,7 @@ let UserService = class UserService {
         this.url = "http://localhost:2458/v1/test/";
     }
     getSinVariable() {
-        return this.http.get(`${this.url + '/metodoGetSinVariable'}`)
+        return this.http.get(`${this.url + '/metodoGetSinVariable'}`, httpOptions)
             .pipe(timeout(3000), map(res => {
             return res;
         }), catchError(err => {

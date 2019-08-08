@@ -4,21 +4,35 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ProductAlertsComponent } from './product-alerts/product-alerts.component';
+import { FormsComponent } from './forms/forms.component';
 import { HomeComponent } from './home/home.component';
+import { NavComponent } from './nav/nav.component';
+
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NotificationsService } from './notifications/notifications.component';
+import { ControlsComponent } from './controls/controls.component';
+import { TablesComponent } from './tables/tables.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ProductAlertsComponent,
-    HomeComponent
+    FormsComponent,
+    HomeComponent,
+    NavComponent,
+    ControlsComponent,
+    TablesComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    MatSnackBarModule,
+    BrowserAnimationsModule
   ],
-  providers: [],
+  providers: [
+    NotificationsService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

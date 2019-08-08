@@ -1,11 +1,15 @@
 import * as tslib_1 from "tslib";
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { ProductAlertsComponent } from './product-alerts/product-alerts.component';
+import { FormsComponent } from './forms/forms.component';
 import { HomeComponent } from './home/home.component';
+import { ControlsComponent } from './controls/controls.component';
+import { TablesComponent } from './tables/tables.component';
 const routes = [
     { path: '', component: HomeComponent },
-    { path: 'products', component: ProductAlertsComponent }
+    { path: 'controls', component: ControlsComponent },
+    { path: 'tables', component: TablesComponent },
+    { path: 'forms', component: FormsComponent }
 ];
 let AppRoutingModule = class AppRoutingModule {
 };
