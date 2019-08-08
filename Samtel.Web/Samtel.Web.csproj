@@ -222,6 +222,7 @@
     <None Include="src\app\nav\nav.component.scss" />
     <Content Include="src\app\nav\nav.component.html" />
     <Content Include="src\app\forms\forms.component.html" />
+    <Content Include="src\app\tables\tables.component.html" />
     <Content Include="src\environments\environment.prod.ts" />
     <Content Include="src\environments\environment.ts" />
     <Content Include="src\favicon.ico" />
@@ -260,6 +261,8 @@
     <TypeScriptCompile Include="src\app\nav\nav.component.ts" />
     <TypeScriptCompile Include="src\app\notifications\notifications.component.ts" />
     <TypeScriptCompile Include="src\app\forms\forms.component.ts" />
+    <TypeScriptCompile Include="src\app\tables\tables.component.spec.ts" />
+    <TypeScriptCompile Include="src\app\tables\tables.component.ts" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

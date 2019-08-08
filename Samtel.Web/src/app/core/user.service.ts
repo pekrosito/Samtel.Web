@@ -37,4 +37,9 @@ export class UserService {
       );
   }
 
+  metodoPutActualizar(data: any): Observable<any> {
+    const url = `${this.url + 'metodoPutActualizar'}`;
+    return this.http.put<any>(url, data, httpOptions);
+  }
+
 }
