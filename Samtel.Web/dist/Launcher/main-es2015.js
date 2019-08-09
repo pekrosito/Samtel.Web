@@ -34,6 +34,17 @@ module.exports = "<app-nav></app-nav>\r\n<section>\r\n  <router-outlet></router-
 
 /***/ }),
 
+/***/ "./node_modules/raw-loader/index.js!./src/app/clients/clients.component.html":
+/*!**************************************************************************!*\
+  !*** ./node_modules/raw-loader!./src/app/clients/clients.component.html ***!
+  \**************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<p>clients works!</p>\n"
+
+/***/ }),
+
 /***/ "./node_modules/raw-loader/index.js!./src/app/controls/controls.component.html":
 /*!****************************************************************************!*\
   !*** ./node_modules/raw-loader!./src/app/controls/controls.component.html ***!
@@ -106,6 +117,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _home_home_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./home/home.component */ "./src/app/home/home.component.ts");
 /* harmony import */ var _controls_controls_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./controls/controls.component */ "./src/app/controls/controls.component.ts");
 /* harmony import */ var _tables_tables_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./tables/tables.component */ "./src/app/tables/tables.component.ts");
+/* harmony import */ var _clients_clients_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./clients/clients.component */ "./src/app/clients/clients.component.ts");
+
 
 
 
@@ -117,7 +130,8 @@ const routes = [
     { path: '', component: _home_home_component__WEBPACK_IMPORTED_MODULE_4__["HomeComponent"] },
     { path: 'controls', component: _controls_controls_component__WEBPACK_IMPORTED_MODULE_5__["ControlsComponent"] },
     { path: 'tables', component: _tables_tables_component__WEBPACK_IMPORTED_MODULE_6__["TablesComponent"] },
-    { path: 'forms', component: _forms_forms_component__WEBPACK_IMPORTED_MODULE_3__["FormsComponent"] }
+    { path: 'forms', component: _forms_forms_component__WEBPACK_IMPORTED_MODULE_3__["FormsComponent"] },
+    { path: 'clients', component: _clients_clients_component__WEBPACK_IMPORTED_MODULE_7__["ClientsComponent"] }
 ];
 let AppRoutingModule = class AppRoutingModule {
 };
@@ -187,6 +201,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _controls_controls_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./controls/controls.component */ "./src/app/controls/controls.component.ts");
 /* harmony import */ var _tables_tables_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./tables/tables.component */ "./src/app/tables/tables.component.ts");
 /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm2015/forms.js");
+/* harmony import */ var _clients_clients_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./clients/clients.component */ "./src/app/clients/clients.component.ts");
+
 
 
 
@@ -212,7 +228,8 @@ AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
             _home_home_component__WEBPACK_IMPORTED_MODULE_7__["HomeComponent"],
             _nav_nav_component__WEBPACK_IMPORTED_MODULE_8__["NavComponent"],
             _controls_controls_component__WEBPACK_IMPORTED_MODULE_12__["ControlsComponent"],
-            _tables_tables_component__WEBPACK_IMPORTED_MODULE_13__["TablesComponent"]
+            _tables_tables_component__WEBPACK_IMPORTED_MODULE_13__["TablesComponent"],
+            _clients_clients_component__WEBPACK_IMPORTED_MODULE_15__["ClientsComponent"]
         ],
         imports: [
             _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"],
@@ -228,6 +245,36 @@ AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_5__["AppComponent"]]
     })
 ], AppModule);
+
+
+
+/***/ }),
+
+/***/ "./src/app/clients/clients.component.ts":
+/*!**********************************************!*\
+  !*** ./src/app/clients/clients.component.ts ***!
+  \**********************************************/
+/*! exports provided: ClientsComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ClientsComponent", function() { return ClientsComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+
+
+let ClientsComponent = class ClientsComponent {
+    constructor() { }
+    ngOnInit() {
+    }
+};
+ClientsComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+        selector: 'app-clients',
+        template: __webpack_require__(/*! raw-loader!./clients.component.html */ "./node_modules/raw-loader/index.js!./src/app/clients/clients.component.html")
+    })
+], ClientsComponent);
 
 
 
@@ -362,8 +409,8 @@ let FormsComponent = class FormsComponent {
                 users.edad = 1993;
                 return users;
             });
+            console.log("response", response);
             this.setData(response);
-            this.notificationsServices.toast("exitoso!");
         }, error => {
             console.log("Error");
             this.notificationsServices.toast("error!");
@@ -371,8 +418,8 @@ let FormsComponent = class FormsComponent {
     }
     loadComponent() {
         this.formPerson = this.FB.group({
-            nombre: new _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormControl"]({ value: '', disable: false }, _angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].required),
-            apellido: new _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormControl"]({ value: '', disable: false }, _angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].required)
+            nombre: new _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormControl"]({ value: "o", disable: false }, _angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].required),
+            apellido: new _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormControl"]({ value: "o", disable: false }, _angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].required)
         });
     }
     aceptar() {
@@ -381,7 +428,7 @@ let FormsComponent = class FormsComponent {
         if (this.formPerson.invalid) {
             return;
         }
-        this.api.metodoPutActualizar(this.formPerson.value).subscribe(response => { console.log("respnse", response); }, error => { });
+        this.api.metodoPutActualizar(this.formPerson.value).subscribe(response => { console.log("respnse", response); }, error => { this.notificationsServices.toast("error!"); });
     }
     setData(response) {
         this.formPerson.get('nombre').setValue(response[0].nombre);

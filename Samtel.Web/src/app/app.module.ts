@@ -15,6 +15,7 @@ import { ControlsComponent } from './controls/controls.component';
 import { TablesComponent } from './tables/tables.component';
 
 import { ReactiveFormsModule } from '@angular/forms';
+import { ClientsComponent } from './clients/clients.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     HomeComponent,
     NavComponent,
     ControlsComponent,
-    TablesComponent
+    TablesComponent,
+    ClientsComponent
   ],
   imports: [
     BrowserModule,
