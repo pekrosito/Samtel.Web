@@ -25,9 +25,10 @@ export class FormsComponent implements OnInit {
         response = response.map(users => {
         users.edad = 1993;
         return users;
-        });
-        console.log("response", response)
+      });
         this.setData(response);
+
+   
       },
       error => {
         console.log("Error");
@@ -38,8 +39,8 @@ export class FormsComponent implements OnInit {
 
   loadComponent() {
     this.formPerson = this.FB.group({
-      nombre: new FormControl({ value: "o", disable: false }, Validators.required),
-      apellido: new FormControl({ value: "o", disable: false }, Validators.required)
+      nombre: new FormControl({ value: '', disable: false }, Validators.required),
+      apellido: new FormControl({ value: '', disable: false }, Validators.required)
     })
   }
 
