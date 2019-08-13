@@ -85,7 +85,7 @@ module.exports = "<div>\r\n  <nav class=\"navbar navbar-default\">\r\n    <div c
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<p>tables works!</p>\r\n"
+module.exports = "<p>tables works!</p>\r\n<div class=\"row\">\r\n  <div class=\"col-sm-12 col-md-12 col-lg-12 form-group\">\r\n    <div class=\"\">\r\n      <table class=\"table table-hover\">\r\n        <thead class=\"thead-dark\">\r\n        <th scope=\"col\">Nombre</th>\r\n        <th scope=\"col\">Apellido</th>\r\n        <th scope=\"col\" colspan=\"2\">Acción</th>\r\n        </thead>\r\n        <tbody>\r\n          <tr *ngFor=\"let user of users; let i = index\" [ngClass]=\"{'selected': user.edit}\">\r\n            <td>{{ user.nombre }}</td>\r\n            <td>{{ user.apellido }}</td>\r\n            <td>\r\n              <button type=\"button\" class=\"btn btn-default btn-sm\" (click)=\"editUser(user)\">\r\n                Editar\r\n              </button>\r\n            </td>\r\n            <td>\r\n              <button type=\"button\" class=\"btn btn-default btn-sm\" (click)=\"deleteUser(user, i)\">\r\n                Eliminar\r\n              </button>\r\n            </td>\r\n          </tr>\r\n        </tbody>\r\n      </table>\r\n    </div>\r\n  </div>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -363,7 +363,6 @@ let FormsComponent = class FormsComponent {
                 return users;
             });
             this.setData(response);
-            this.notificationsServices.toast("exitoso!");
         }, error => {
             console.log("Error");
             this.notificationsServices.toast("error!");
@@ -381,7 +380,7 @@ let FormsComponent = class FormsComponent {
         if (this.formPerson.invalid) {
             return;
         }
-        this.api.metodoPutActualizar(this.formPerson.value).subscribe(response => { console.log("respnse", response); }, error => { });
+        this.api.metodoPutActualizar(this.formPerson.value).subscribe(response => { console.log("respnse", response); }, error => { this.notificationsServices.toast("error!"); });
     }
     setData(response) {
         this.formPerson.get('nombre').setValue(response[0].nombre);
@@ -527,17 +526,55 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TablesComponent", function() { return TablesComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _core_user_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./../core/user.service */ "./src/app/core/user.service.ts");
+/* harmony import */ var _notifications_notifications_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./../notifications/notifications.component */ "./src/app/notifications/notifications.component.ts");
+
+
 
 
 let TablesComponent = class TablesComponent {
-    constructor() { }
+    constructor(api, notificationsServices) {
+        this.api = api;
+        this.notificationsServices = notificationsServices;
+    }
     ngOnInit() {
+        this.load();
+    }
+    load() {
+        this.api.getSinVariable().subscribe(response => {
+            this.users = response.map(user => {
+                user.edad = 1993;
+                user.nombreCompleto = user.nombre + " -- " + user.apellido;
+                user.edit = false;
+                return user;
+            });
+            console.log("  this.users ", this.users);
+        }, error => {
+            console.log("Error");
+            this.notificationsServices.toast("error!");
+        });
+    }
+    editUser(user) {
+        console.log("event", user);
+        user.edit = false;
+    }
+    deleteUser(user, index) {
+        console.log("i", index);
+        console.log("user", user);
+        this.notificationsServices.toast("El usuario " + user.nombre + " fue eliminado satisfactoriamente");
+        //this.users.splice(index,1);
+        user.edit = true;
     }
 };
+TablesComponent.ctorParameters = () => [
+    { type: _core_user_service__WEBPACK_IMPORTED_MODULE_2__["UserService"] },
+    { type: _notifications_notifications_component__WEBPACK_IMPORTED_MODULE_3__["NotificationsService"] }
+];
 TablesComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
         selector: 'app-tables',
-        template: __webpack_require__(/*! raw-loader!./tables.component.html */ "./node_modules/raw-loader/index.js!./src/app/tables/tables.component.html")
+        template: __webpack_require__(/*! raw-loader!./tables.component.html */ "./node_modules/raw-loader/index.js!./src/app/tables/tables.component.html"),
+        styles: ["./tables.component.scss"]
     })
 ], TablesComponent);
 

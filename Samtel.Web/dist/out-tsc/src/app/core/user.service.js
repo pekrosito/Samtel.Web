@@ -27,6 +27,10 @@ let UserService = class UserService {
             return Observable.throw(err);
         }));
     }
+    metodoPutActualizar(data) {
+        const url = `${this.url + 'metodoPutActualizar'}`;
+        return this.http.put(url, data, httpOptions);
+    }
 };
 UserService = tslib_1.__decorate([
     Injectable({
