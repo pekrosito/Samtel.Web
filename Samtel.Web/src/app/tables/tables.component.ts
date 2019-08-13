@@ -12,6 +12,8 @@ export class TablesComponent implements OnInit {
   clients: any;
   identifications: any;
   ocupations: any;
+  cedula: any;
+ 
 
   constructor(private clientService: ClientService, private generalService: GeneralService, public notificationsServices: NotificationsService) { }
 
@@ -39,6 +41,11 @@ export class TablesComponent implements OnInit {
   getIdentifications(callBack) {
     this.generalService.getIdentifications().subscribe(
       response => {
+        response = response.map(iden => {
+          iden.id = iden.description == "NUMERO DE IDENTIFICACION TRIBUTARIA" ? 1 : iden.id;
+          return iden;
+        })
+        console.log(response)
         if (callBack) {
           return callBack(response);
         }
@@ -91,12 +98,11 @@ export class TablesComponent implements OnInit {
     client.edit = true;
   }
 
-  changeIdentification() {
-    console.log("event")
+  changeIdentification(event) {
+      console.log("event", (<HTMLInputElement>event.target).value )
   }
 
-  changeTypeIdentification(event, client) {
-    console.log("identification", event.srcElement.value)
-    console.log("client", client)
+  changeTypeIdentification(event) {
+    console.log("identification", (<HTMLInputElement>event.target).value )
   }
 }

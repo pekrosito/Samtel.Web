@@ -24,7 +24,7 @@ export class GeneralService {
     return this.http.get<any>(`${this.url + 'getIdentifications'}`, httpOptions)
       .pipe(
         timeout(3000),
-        map(res => {
+      map(res => {
           return res;
         }),
         catchError(err => {

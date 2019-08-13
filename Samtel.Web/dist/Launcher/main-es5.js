@@ -96,7 +96,7 @@ module.exports = "<div>\r\n  <nav class=\"navbar navbar-default\">\r\n    <div c
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\r\n\r\n  <div class=\"row\">\r\n    <div class=\"col-sm-12 col-md-12 col-lg-12  form-group\">\r\n      <div class=\"\">\r\n        <table class=\"table table-hover\">\r\n          <thead class=\"thead-dark\">\r\n            <th scope=\"col\">Nombre</th>\r\n            <th scope=\"col\">Apellido</th>\r\n            <th scope=\"col\" colspan=\"2\">Acción</th>\r\n          </thead>\r\n          <tbody>\r\n            <tr *ngFor=\"let user of users; let i = index\" [ngClass]=\"{'selected': user.edit}\">\r\n              <td>{{ user.nombreCompleto }}</td>\r\n              <td>\r\n                <button type=\"button\" class=\"btn btn-default btn-sm\" (click)=\"editUser(user)\">\r\n                  Editar\r\n                </button>\r\n              </td>\r\n              <td>\r\n                <button type=\"button\" class=\"btn btn-default btn-sm\" (click)=\"deleteUser(user, i)\">\r\n                  Eliminar\r\n                </button>\r\n              </td>\r\n            </tr>\r\n          </tbody>\r\n        </table>\r\n      </div>\r\n    </div>\r\n</div>\r\n</div>\r\n<style>\r\n  .selected {\r\n    background: #ff0000;\r\n  }\r\n</style>\r\n"
+module.exports = "<div class=\"container\">\r\n\r\n  <div class=\"row\">\r\n    <div class=\"col-sm-12 col-md-12 col-lg-12  form-group\">\r\n      <div class=\"\">\r\n        <table class=\"table table-hover\">\r\n          <thead class=\"thead-dark\">\r\n          <th scope=\"col\">Nombre Completo</th>\r\n          <th scope=\"col\">Tipo de Identificación</th>\r\n          <th scope=\"col\">Identificación</th>\r\n          <th scope=\"col\">Numero de identificación</th>\r\n          <th scope=\"col\">Ocupación</th>\r\n          <th scope=\"col\" colspan=\"2\">Acción</th>\r\n          </thead>\r\n          <tbody>\r\n            <tr *ngFor=\"let client of clients; let i = index\" [ngClass]=\"{'selected': client.edit}\">\r\n              <td>{{ client.nombreCompleto }}</td>\r\n              <td>{{ client.codTipoIdentificacion }}</td>\r\n              <td>\r\n                <select class=\"form-control\" (change)=\"changeTypeIdentification($event)\">\r\n                  <option value=\"\" disabled>Seleccione una opcion</option>\r\n                  <option *ngFor=\"let identification of identifications\" value=\"{{identification.id}}\" [selected]=\"identification.id == client.codNaturaleza\">{{identification.description}}</option>\r\n                </select>\r\n              </td>\r\n              <td><input  type=\"text\" value=\"{{ client.numIdentificacion }}\" class=\"form-control\"  (keyup)=\"changeIdentification($event)\" /> </td>\r\n              <td>{{ client.codOcupacion }}</td>\r\n              <td>\r\n                <button type=\"button\" class=\"btn btn-default btn-sm\" (click)=\"editClient(client)\">\r\n                  Editar\r\n                </button>\r\n              </td>\r\n              <td>\r\n                <button type=\"button\" class=\"btn btn-default btn-sm\" (click)=\"deleteClient(client, i)\">\r\n                  Eliminar\r\n                </button>\r\n              </td>\r\n            </tr>\r\n          </tbody>\r\n        </table>\r\n      </div>\r\n    </div>\r\n</div>\r\n</div>\r\n<style>\r\n  .selected {\r\n    background: #ff0000;\r\n  }\r\n</style>\r\n"
 
 /***/ }),
 
@@ -380,6 +380,76 @@ var ClientService = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/app/core/general.service.ts":
+/*!*****************************************!*\
+  !*** ./src/app/core/general.service.ts ***!
+  \*****************************************/
+/*! exports provided: GeneralService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GeneralService", function() { return GeneralService; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+/* harmony import */ var rxjs_Observable__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs/Observable */ "./node_modules/rxjs-compat/_esm5/Observable.js");
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
+
+
+
+
+
+
+var httpOptions = {
+    headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
+        'Content-Type': 'application/json',
+        'Authorization': '123456',
+        'X-System': 'Desktop'
+    })
+};
+var GeneralService = /** @class */ (function () {
+    function GeneralService(http) {
+        this.http = http;
+        this.url = "http://localhost:2458/v1/general/";
+    }
+    GeneralService.prototype.getIdentifications = function () {
+        return this.http.get("" + (this.url + 'getIdentifications'), httpOptions)
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["timeout"])(3000), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])(function (res) {
+            return res;
+        }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(function (err) {
+            /*if (err.name === 'TimeoutError') {
+              this.fallback(data);
+            }*/
+            return rxjs_Observable__WEBPACK_IMPORTED_MODULE_3__["Observable"].throw(err);
+        }));
+    };
+    GeneralService.prototype.getOcupations = function () {
+        return this.http.get("" + (this.url + 'getOcupations'), httpOptions)
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["timeout"])(3000), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])(function (res) {
+            return res;
+        }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(function (err) {
+            /*if (err.name === 'TimeoutError') {
+              this.fallback(data);
+            }*/
+            return rxjs_Observable__WEBPACK_IMPORTED_MODULE_3__["Observable"].throw(err);
+        }));
+    };
+    GeneralService.ctorParameters = function () { return [
+        { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"] }
+    ]; };
+    GeneralService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
+            providedIn: 'root'
+        })
+    ], GeneralService);
+    return GeneralService;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/core/user.service.ts":
 /*!**************************************!*\
   !*** ./src/app/core/user.service.ts ***!
@@ -411,7 +481,7 @@ var httpOptions = {
 var UserService = /** @class */ (function () {
     function UserService(http) {
         this.http = http;
-        this.url = "http://localhost:2458/v1/test/";
+        this.url = "http://localhost:2458/v1/test";
     }
     UserService.prototype.getSinVariable = function () {
         return this.http.get("" + (this.url + '/metodoGetSinVariable'), httpOptions)
@@ -658,13 +728,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _notifications_notifications_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./../notifications/notifications.component */ "./src/app/notifications/notifications.component.ts");
 /* harmony import */ var _core_client_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../core/client.service */ "./src/app/core/client.service.ts");
+/* harmony import */ var _core_general_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../core/general.service */ "./src/app/core/general.service.ts");
+
 
 
 
 
 var TablesComponent = /** @class */ (function () {
-    function TablesComponent(api, notificationsServices) {
-        this.api = api;
+    function TablesComponent(clientService, generalService, notificationsServices) {
+        this.clientService = clientService;
+        this.generalService = generalService;
         this.notificationsServices = notificationsServices;
     }
     TablesComponent.prototype.ngOnInit = function () {
@@ -672,31 +745,77 @@ var TablesComponent = /** @class */ (function () {
     };
     TablesComponent.prototype.load = function () {
         var _this = this;
-        this.api.getClients().subscribe(function (response) {
-            console.log(response);
-            _this.clients = response.map(function (client) {
-                client.edad = 1993;
-                client.edit = false;
-                return client;
+        this.getIdentifications(function (identification) {
+            _this.identifications = identification;
+            console.log(identification);
+            _this.getOcupations(function (ocupations) {
+                _this.ocupations = ocupations;
+                console.log(ocupations);
+                _this.getClients(function (clients) {
+                    _this.clients = clients;
+                    console.log(clients);
+                });
             });
+        });
+    };
+    TablesComponent.prototype.getIdentifications = function (callBack) {
+        var _this = this;
+        this.generalService.getIdentifications().subscribe(function (response) {
+            response = response.map(function (iden) {
+                iden.id = iden.description == "NUMERO DE IDENTIFICACION TRIBUTARIA" ? 1 : iden.id;
+                return iden;
+            });
+            console.log(response);
+            if (callBack) {
+                return callBack(response);
+            }
+        }, function (error) {
+            console.log("Error");
+            _this.notificationsServices.toast("Error al consultar la información de identificación!");
+        });
+    };
+    TablesComponent.prototype.getOcupations = function (callBack) {
+        var _this = this;
+        this.generalService.getOcupations().subscribe(function (response) {
+            if (callBack) {
+                return callBack(response);
+            }
+        }, function (error) {
+            console.log("Error");
+            _this.notificationsServices.toast("Error al consultar la información de identificación!");
+        });
+    };
+    TablesComponent.prototype.getClients = function (callBack) {
+        var _this = this;
+        this.clientService.getClients().subscribe(function (response) {
+            if (callBack) {
+                return callBack(response);
+            }
         }, function (error) {
             console.log("Error");
             _this.notificationsServices.toast("error!");
         });
     };
-    TablesComponent.prototype.editUser = function (client) {
+    TablesComponent.prototype.editClient = function (client) {
         console.log("event", client);
         client.edit = false;
     };
-    TablesComponent.prototype.deleteUser = function (client, index) {
+    TablesComponent.prototype.deleteClient = function (client, index) {
         console.log("i", index);
         console.log("client", client);
         this.notificationsServices.toast("El usuario " + client.nombreCompleto + " fue eliminado satisfactoriamente");
         //this.users.splice(index,1);
         client.edit = true;
     };
+    TablesComponent.prototype.changeIdentification = function (event) {
+        console.log("event", event.target.value);
+    };
+    TablesComponent.prototype.changeTypeIdentification = function (event) {
+        console.log("identification", event.target.value);
+    };
     TablesComponent.ctorParameters = function () { return [
         { type: _core_client_service__WEBPACK_IMPORTED_MODULE_3__["ClientService"] },
+        { type: _core_general_service__WEBPACK_IMPORTED_MODULE_4__["GeneralService"] },
         { type: _notifications_notifications_component__WEBPACK_IMPORTED_MODULE_2__["NotificationsService"] }
     ]; };
     TablesComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([

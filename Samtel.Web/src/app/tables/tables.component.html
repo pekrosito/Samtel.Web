@@ -17,12 +17,12 @@
               <td>{{ client.nombreCompleto }}</td>
               <td>{{ client.codTipoIdentificacion }}</td>
               <td>
-                <select class="form-control" (change)="changeTypeIdentification($event, client)">
+                <select class="form-control" (change)="changeTypeIdentification($event)">
                   <option value="" disabled>Seleccione una opcion</option>
-                  <option *ngFor="let identification of identifications" [ngValue]="identification">{{identification.description}}</option>
+                  <option *ngFor="let identification of identifications" value="{{identification.id}}" [selected]="identification.id == client.codNaturaleza">{{identification.description}}</option>
                 </select>
               </td>
-              <td><input value="{{ client.numIdentificacion }}" (change)="changeIdentification()" /> </td>
+              <td><input  type="text" value="{{ client.numIdentificacion }}" class="form-control"  (keyup)="changeIdentification($event)" /> </td>
               <td>{{ client.codOcupacion }}</td>
               <td>
                 <button type="button" class="btn btn-default btn-sm" (click)="editClient(client)">
