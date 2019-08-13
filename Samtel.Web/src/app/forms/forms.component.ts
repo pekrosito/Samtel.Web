@@ -17,10 +17,12 @@ export class FormsComponent implements OnInit {
   ngOnInit() {
     this.loadComponent();
     this.load();
+  
   }
 
   load() {
     this.api.getSinVariable().subscribe(
+
       response => {
         response = response.map(users => {
         users.edad = 1993;

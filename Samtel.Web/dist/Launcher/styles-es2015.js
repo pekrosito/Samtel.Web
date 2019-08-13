@@ -557,7 +557,7 @@ if(false) {}
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\pedro.rivera\Projects\Samtel.Web\Samtel.Web\src\styles.css */"./src/styles.css");
+module.exports = __webpack_require__(/*! C:\Users\diana.cardozo\Documents\GitHub\Samtel.Web\Samtel.Web\src\styles.css */"./src/styles.css");
 
 
 /***/ })
