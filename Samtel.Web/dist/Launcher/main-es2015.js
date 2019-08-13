@@ -41,7 +41,7 @@ module.exports = "<app-nav></app-nav>\r\n<section>\r\n  <router-outlet></router-
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<p>clients works!</p>\n"
+module.exports = "<p>clients works!</p>\r\n"
 
 /***/ }),
 
@@ -63,7 +63,7 @@ module.exports = "<p>controls works!</p>\r\n"
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\r\n<div class=\"container\">\r\n\r\n      <div class=\"row\">\r\n        <div class=\"col-sm-12 col-md-12 col-lg-12  form-group\">\r\n          <form [formGroup]=\"formPerson\">\r\n            <div class=\"form-group\">\r\n              <label>Nombre</label>\r\n              <input type=\"text\" class=\"form-control\" formControlName=\"nombre\" required>\r\n              <div *ngIf=\"submitted && formPerson.controls.nombre.errors\" class=\"has-error\">\r\n                <div *ngIf=\"formPerson.controls.nombre.errors.required\">Nombre requerido</div>\r\n              </div>\r\n            </div>\r\n            <div class=\"form-group\">\r\n              <label>Apellido</label>\r\n              <input type=\"text\" class=\"form-control\" formControlName=\"apellido\" required>\r\n              <div *ngIf=\"submitted && formPerson.controls.apellido.errors\" class=\"has-error\">\r\n                <div *ngIf=\"formPerson.controls.apellido.errors.required\">Apellido requerido</div>\r\n              </div>\r\n            </div>\r\n          </form>\r\n          <div class=\"col-sm-6\" style=\"text-align: end;\">\r\n            <button type=\"button\" class=\"btn btn-primary\" (click)=\"aceptar()\"\r\n                    [disabled]=\"!formPerson.valid\">Guardar</button>\r\n          </div>\r\n        </div>\r\n      </div>\r\n    \r\n</div>\r\n"
+module.exports = "\r\n<div class=\"container\">\r\n\r\n      <div class=\"row\">\r\n        <div class=\"col-sm-12 col-md-12 col-lg-12  form-group\">\r\n          <form [formGroup]=\"formPerson\">\r\n            <div class=\"form-group\">\r\n              <label>Nombre</label>\r\n              <input type=\"text\" class=\"form-control\" formControlName=\"nombre\" required>\r\n              <div *ngIf=\"submitted && formPerson.controls.nombre.errors\" class=\"has-error\">\r\n                <div *ngIf=\"formPerson.controls.nombre.errors.required\">Nombre requerido</div>\r\n              </div>\r\n            </div>\r\n            <div class=\"form-group\">\r\n              <label>Apellido</label>\r\n              <input type=\"text\" class=\"form-control\" formControlName=\"apellido\" required>\r\n              <div *ngIf=\"submitted && formPerson.controls.apellido.errors\" class=\"has-error\">\r\n                <div *ngIf=\"formPerson.controls.apellido.errors.required\">Apellido requerido</div>\r\n              </div>\r\n            </div>\r\n            <div class=\"form-group\">\r\n              <label>Genero</label>\r\n              <select class=\"form-control\" (change)=\"changeUser($event)\" formControlName=\"user\">\r\n                <option value=\"\" disabled>Seleccione una opcion</option>\r\n                <option *ngFor=\"let user of users\" [ngValue]=\"user\">{{user.nombre}} {{user.apellido}}</option>\r\n              </select>\r\n            </div>\r\n          </form>\r\n          <div class=\"col-sm-6\" style=\"text-align: end;\">\r\n            <button type=\"button\" class=\"btn btn-primary\" (click)=\"aceptar()\"\r\n                    [disabled]=\"!formPerson.valid\">Guardar</button>\r\n          </div>\r\n        </div>\r\n      </div>\r\n    \r\n</div>\r\n"
 
 /***/ }),
 
@@ -96,7 +96,7 @@ module.exports = "<div>\r\n  <nav class=\"navbar navbar-default\">\r\n    <div c
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<p>tables works!</p>\r\n"
+module.exports = "<div class=\"container\">\r\n\r\n  <div class=\"row\">\r\n    <div class=\"col-sm-12 col-md-12 col-lg-12  form-group\">\r\n      <div class=\"\">\r\n        <table class=\"table table-hover\">\r\n          <thead class=\"thead-dark\">\r\n            <th scope=\"col\">Nombre</th>\r\n            <th scope=\"col\">Apellido</th>\r\n            <th scope=\"col\" colspan=\"2\">Acción</th>\r\n          </thead>\r\n          <tbody>\r\n            <tr *ngFor=\"let user of users; let i = index\" [ngClass]=\"{'selected': user.edit}\">\r\n              <td>{{ user.nombreCompleto }}</td>\r\n              <td>\r\n                <button type=\"button\" class=\"btn btn-default btn-sm\" (click)=\"editUser(user)\">\r\n                  Editar\r\n                </button>\r\n              </td>\r\n              <td>\r\n                <button type=\"button\" class=\"btn btn-default btn-sm\" (click)=\"deleteUser(user, i)\">\r\n                  Eliminar\r\n                </button>\r\n              </td>\r\n            </tr>\r\n          </tbody>\r\n        </table>\r\n      </div>\r\n    </div>\r\n</div>\r\n</div>\r\n<style>\r\n  .selected {\r\n    background: #ff0000;\r\n  }\r\n</style>\r\n"
 
 /***/ }),
 
@@ -310,6 +310,64 @@ ControlsComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 
 /***/ }),
 
+/***/ "./src/app/core/client.service.ts":
+/*!****************************************!*\
+  !*** ./src/app/core/client.service.ts ***!
+  \****************************************/
+/*! exports provided: ClientService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ClientService", function() { return ClientService; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
+/* harmony import */ var rxjs_Observable__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs/Observable */ "./node_modules/rxjs-compat/_esm2015/Observable.js");
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm2015/operators/index.js");
+
+
+
+
+
+
+const httpOptions = {
+    headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
+        'Content-Type': 'application/json',
+        'Authorization': '123456',
+        'X-System': 'Desktop'
+    })
+};
+let ClientService = class ClientService {
+    constructor(http) {
+        this.http = http;
+        this.url = "http://localhost:2458/v1/client/";
+    }
+    getClients() {
+        return this.http.get(`${this.url + 'getClients'}`, httpOptions)
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["timeout"])(3000), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])(res => {
+            return res;
+        }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(err => {
+            /*if (err.name === 'TimeoutError') {
+              this.fallback(data);
+            }*/
+            return rxjs_Observable__WEBPACK_IMPORTED_MODULE_3__["Observable"].throw(err);
+        }));
+    }
+};
+ClientService.ctorParameters = () => [
+    { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"] }
+];
+ClientService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
+        providedIn: 'root'
+    })
+], ClientService);
+
+
+
+/***/ }),
+
 /***/ "./src/app/core/user.service.ts":
 /*!**************************************!*\
   !*** ./src/app/core/user.service.ts ***!
@@ -405,11 +463,11 @@ let FormsComponent = class FormsComponent {
     }
     load() {
         this.api.getSinVariable().subscribe(response => {
-            response = response.map(users => {
-                users.edad = 1993;
-                return users;
+            this.users = response.map(persona => {
+                persona.edad = 1993;
+                persona.nombreCompleto = persona.nombre + " -- " + persona.apellido;
+                return persona;
             });
-            console.log("response", response);
             this.setData(response);
         }, error => {
             console.log("Error");
@@ -418,8 +476,9 @@ let FormsComponent = class FormsComponent {
     }
     loadComponent() {
         this.formPerson = this.FB.group({
-            nombre: new _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormControl"]({ value: "o", disable: false }, _angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].required),
-            apellido: new _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormControl"]({ value: "o", disable: false }, _angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].required)
+            nombre: new _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormControl"]({}, _angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].required),
+            apellido: new _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormControl"]({}, _angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].required),
+            user: new _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormControl"]({}, _angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].required)
         });
     }
     aceptar() {
@@ -428,7 +487,10 @@ let FormsComponent = class FormsComponent {
         if (this.formPerson.invalid) {
             return;
         }
-        this.api.metodoPutActualizar(this.formPerson.value).subscribe(response => { console.log("respnse", response); }, error => { this.notificationsServices.toast("error!"); });
+        this.api.metodoPutActualizar(this.formPerson.value).subscribe(response => { console.log("respnse", response); }, error => { this.notificationsServices.toast("error!"); console.log("error", error); });
+    }
+    changeUser(event) {
+        console.log("event", event);
     }
     setData(response) {
         this.formPerson.get('nombre').setValue(response[0].nombre);
@@ -574,17 +636,54 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TablesComponent", function() { return TablesComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _notifications_notifications_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./../notifications/notifications.component */ "./src/app/notifications/notifications.component.ts");
+/* harmony import */ var _core_client_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../core/client.service */ "./src/app/core/client.service.ts");
+
+
 
 
 let TablesComponent = class TablesComponent {
-    constructor() { }
+    constructor(api, notificationsServices) {
+        this.api = api;
+        this.notificationsServices = notificationsServices;
+    }
     ngOnInit() {
+        this.load();
+    }
+    load() {
+        this.api.getClients().subscribe(response => {
+            console.log(response);
+            this.clients = response.map(client => {
+                client.edad = 1993;
+                client.edit = false;
+                return client;
+            });
+        }, error => {
+            console.log("Error");
+            this.notificationsServices.toast("error!");
+        });
+    }
+    editUser(client) {
+        console.log("event", client);
+        client.edit = false;
+    }
+    deleteUser(client, index) {
+        console.log("i", index);
+        console.log("client", client);
+        this.notificationsServices.toast("El usuario " + client.nombreCompleto + " fue eliminado satisfactoriamente");
+        //this.users.splice(index,1);
+        client.edit = true;
     }
 };
+TablesComponent.ctorParameters = () => [
+    { type: _core_client_service__WEBPACK_IMPORTED_MODULE_3__["ClientService"] },
+    { type: _notifications_notifications_component__WEBPACK_IMPORTED_MODULE_2__["NotificationsService"] }
+];
 TablesComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
         selector: 'app-tables',
-        template: __webpack_require__(/*! raw-loader!./tables.component.html */ "./node_modules/raw-loader/index.js!./src/app/tables/tables.component.html")
+        template: __webpack_require__(/*! raw-loader!./tables.component.html */ "./node_modules/raw-loader/index.js!./src/app/tables/tables.component.html"),
+        styles: ["./tables.component.scss"]
     })
 ], TablesComponent);
 

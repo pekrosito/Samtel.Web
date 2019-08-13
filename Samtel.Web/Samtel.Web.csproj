@@ -252,13 +252,14 @@
     <Content Include="tsconfig.json" />
     <Content Include="tsconfig.spec.json" />
     <Content Include="tslint.json" />
+    <Content Include="src\app\tables\tables.component.scss" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="src\app\clients\clients.component.spec.ts" />
     <TypeScriptCompile Include="src\app\clients\clients.component.ts" />
     <TypeScriptCompile Include="src\app\controls\controls.component.spec.ts" />
     <TypeScriptCompile Include="src\app\controls\controls.component.ts" />
-    <TypeScriptCompile Include="src\app\core\user.service.spec.ts" />
+    <TypeScriptCompile Include="src\app\core\client.service.ts" />
     <TypeScriptCompile Include="src\app\core\user.service.ts" />
     <TypeScriptCompile Include="src\app\home\home.component.ts" />
     <TypeScriptCompile Include="src\app\nav\nav.component.ts" />
