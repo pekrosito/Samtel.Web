@@ -16,15 +16,15 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class GeneralService {
-  private url = "http://localhost:2458/v1/general/";
-
+  private url = "http://localhost:2458/v1/identifications/";
+  private url2 = "http://localhost:2458/v1/ocupations/";
   constructor(private http: HttpClient) { }
 
   getIdentifications(): Observable<any> {
     return this.http.get<any>(`${this.url + 'getIdentifications'}`, httpOptions)
       .pipe(
         timeout(3000),
-      map(res => {
+        map(res => {
           return res;
         }),
         catchError(err => {
@@ -37,7 +37,7 @@ export class GeneralService {
   }
 
   getOcupations(): Observable<any> {
-    return this.http.get<any>(`${this.url + 'getOcupations'}`, httpOptions)
+    return this.http.get<any>(`${this.url2 + 'getOcupations'}`, httpOptions)
       .pipe(
         timeout(3000),
         map(res => {

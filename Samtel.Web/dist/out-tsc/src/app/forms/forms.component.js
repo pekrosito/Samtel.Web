@@ -14,10 +14,9 @@ let FormsComponent = class FormsComponent {
     }
     load() {
         this.api.getSinVariable().subscribe(response => {
-            this.users = response.map(persona => {
-                persona.edad = 1993;
-                persona.nombreCompleto = persona.nombre + " -- " + persona.apellido;
-                return persona;
+            response = response.map(users => {
+                users.edad = 1993;
+                return users;
             });
             this.setData(response);
         }, error => {
@@ -27,9 +26,8 @@ let FormsComponent = class FormsComponent {
     }
     loadComponent() {
         this.formPerson = this.FB.group({
-            nombre: new FormControl({}, Validators.required),
-            apellido: new FormControl({}, Validators.required),
-            user: new FormControl({}, Validators.required)
+            nombre: new FormControl({ value: '', disable: false }, Validators.required),
+            apellido: new FormControl({ value: '', disable: false }, Validators.required)
         });
     }
     aceptar() {
@@ -38,10 +36,7 @@ let FormsComponent = class FormsComponent {
         if (this.formPerson.invalid) {
             return;
         }
-        this.api.metodoPutActualizar(this.formPerson.value).subscribe(response => { console.log("respnse", response); }, error => { this.notificationsServices.toast("error!"); console.log("error", error); });
-    }
-    changeUser(event) {
-        console.log("event", event);
+        this.api.metodoPutActualizar(this.formPerson.value).subscribe(response => { console.log("respnse", response); }, error => { this.notificationsServices.toast("error!"); });
     }
     setData(response) {
         this.formPerson.get('nombre').setValue(response[0].nombre);

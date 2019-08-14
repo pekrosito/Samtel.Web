@@ -1,36 +1,33 @@
 <div class="container">
-
   <div class="row">
     <div class="col-sm-12 col-md-12 col-lg-12  form-group">
       <div class="">
         <table class="table table-hover">
           <thead class="thead-dark">
-          <th scope="col">Nombre Completo</th>
-          <th scope="col">Tipo de Identificación</th>
+          <th scope="col">CodNaturaleza</th>
+          <th scope="col">CodTipoIdentificacion</th>
           <th scope="col">Identificación</th>
-          <th scope="col">Numero de identificación</th>
-          <th scope="col">Ocupación</th>
+          <th scope="col">Numero Identificación</th>
           <th scope="col" colspan="2">Acción</th>
           </thead>
           <tbody>
             <tr *ngFor="let client of clients; let i = index" [ngClass]="{'selected': client.edit}">
-              <td>{{ client.nombreCompleto }}</td>
+              <td>{{ client.codNaturaleza }}</td>
               <td>{{ client.codTipoIdentificacion }}</td>
-              <td>
+              <td>                
                 <select class="form-control" (change)="changeTypeIdentification($event)">
                   <option value="" disabled>Seleccione una opcion</option>
                   <option *ngFor="let identification of identifications" value="{{identification.id}}" [selected]="identification.id == client.codNaturaleza">{{identification.description}}</option>
                 </select>
               </td>
-              <td><input  type="text" value="{{ client.numIdentificacion }}" class="form-control"  (keyup)="changeIdentification($event)" /> </td>
-              <td>{{ client.codOcupacion }}</td>
+              <td><input type="text" value="{{ client.numIdentificacion }}" class="form-control" (keyup)="changeIdentification($event)" /> </td>
               <td>
-                <button type="button" class="btn btn-default btn-sm" (click)="editClient(client)">
+                <button type="button" class="btn btn-default btn-sm" (click)="editUser(client)">
                   Editar
                 </button>
               </td>
               <td>
-                <button type="button" class="btn btn-default btn-sm" (click)="deleteClient(client, i)">
+                <button type="button" class="btn btn-default btn-sm" (click)="deleteUser(client, i)">
                   Eliminar
                 </button>
               </td>
@@ -39,7 +36,7 @@
         </table>
       </div>
     </div>
-</div>
+  </div>
 </div>
 <style>
   .selected {
