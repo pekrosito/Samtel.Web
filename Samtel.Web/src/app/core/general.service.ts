@@ -16,8 +16,8 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class GeneralService {
-  private url = "http://localhost:2458/v1/identifications/";
-  private url2 = "http://localhost:2458/v1/ocupations/";
+  private url = "http://localhost:2458/v1/identification/";
+  private url2 = "http://localhost:2458/v1/ocupation/";
   constructor(private http: HttpClient) { }
 
   getIdentifications(): Observable<any> {

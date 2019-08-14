@@ -28,12 +28,14 @@ export class TablesComponent implements OnInit {
     })
     })
   }
+
   getIdentifications(callBack) {
     this.api2.getIdentifications().subscribe(
 
       response => {
               
         if (callBack) {
+          console.log("Mi objeto de identificación es " + response);
           return callBack(response)
         }
 
@@ -45,7 +47,7 @@ export class TablesComponent implements OnInit {
     )
   }
   getClients(callBack) {
-    this.api.getSinVariable().subscribe(
+    this.api.getClients().subscribe(
 
       response => {
 
@@ -74,8 +76,8 @@ export class TablesComponent implements OnInit {
   deleteUser(user, index) {
     console.log("i", index)
     console.log("user", user)
-    this.notificationsServices.toast("El usuario " + user.codNaturaleza + " fue eliminado satisfactoriamente");
-    //this.users.splice(index,1);
+    this.notificationsServices.toast("El usuario " + user.nombreCompleto + " fue eliminado satisfactoriamente");
+    this.clients.splice(index,1);
     user.edit = true;
   }
   changeIdentification(event) {

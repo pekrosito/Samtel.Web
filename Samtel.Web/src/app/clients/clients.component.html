@@ -4,48 +4,50 @@
       <form [formGroup]="formClient">
         <div class="form-group">
           <label>Codigo Naturaleza</label>
-          <input type="text" class="form-control" formControlName="codNaturaleza" required>
-        </div>
-        <div class="form-group">
-          <label>Codigo Tipo Identificación</label>
-          <input type="text" class="form-control" formControlName="codTipoIdentificacion" required>
-          <div *ngIf="submitted && formClient.controls.codTipoIdentificacion.errors" class="has-error">
+          <input type="text" class="form-control" formControlName="codigoNaturalezaCliente" required>
+          <div *ngIf="submitted && formClient.controls.codigoNaturalezaCliente.errors" class="has-error">
           </div>
         </div>
-        <div class="form-group">
-          <label>Codigo Ocupacion</label>
-          <input type="text" class="form-control" formControlName="codOcupacion" required>
-          <div *ngIf="submitted && formClient.controls.codOcupacion.errors" class="has-error">
+          <div class="form-group">
+            <label>Codigo Tipo Identificación</label>
+            <input type="text" class="form-control" formControlName="codigoTipoIdent" required>
+            <div *ngIf="submitted && formClient.controls.codigoTipoIdent.errors" class="has-error">
+            </div>
           </div>
-        </div>
-        <div class="form-group">
-          <label>Numero Identificación</label>
-          <input type="text" class="form-control" formControlName="numIdentificacion" required>
-          <div *ngIf="submitted && formClient.controls.numIdentificacion.errors" class="has-error">
+          <div class="form-group">
+            <label>Codigo Ocupacion</label>
+            <input type="text" class="form-control" formControlName="codigoOcupacion" required>
+            <div *ngIf="submitted && formClient.controls.codigoOcupacion.errors" class="has-error">
+            </div>
           </div>
-        </div>
+          <div class="form-group">
+            <label>Numero Identificación</label>
+            <input type="text" class="form-control" formControlName="numeroIdentificacion" required>
+            <div *ngIf="submitted && formClient.controls.numeroIdentificacion.errors" class="has-error">
+            </div>
+          </div>
 
 
 
-        <div class="form-group">
-          <label>Lugar Expedicion</label>
-          <input type="text" class="form-control" formControlName="lugarExpedicion" required>
-          <div *ngIf="submitted && formClient.controls.lugarExpedicion.errors" class="has-error">
+          <div class="form-group">
+            <label>Lugar Expedicion</label>
+            <input type="text" class="form-control" formControlName="lugarExpedicion" required>
+            <div *ngIf="submitted && formClient.controls.lugarExpedicion.errors" class="has-error">
+            </div>
           </div>
-        </div>
-        <div class="form-group">
-          <label>Identificacion Cliente</label>
-          <input type="text" class="form-control" formControlName="identificacionCliente" required>
-          <div *ngIf="submitted && formClient.controls.identificacionCliente.errors" class="has-error">
+          <div class="form-group">
+            <label>Identificacion Cliente</label>
+            <input type="text" class="form-control" formControlName="identificacionCliente" required>
+            <div *ngIf="submitted && formClient.controls.identificacionCliente.errors" class="has-error">
+            </div>
           </div>
-        </div>
-        <div class="form-group">
-          <label>Nombre Completo</label>
-          <input type="text" class="form-control" formControlName="nombreCompleto" required>
-          <div *ngIf="submitted && formClient.controls.nombreCompleto.errors" class="has-error">
+          <div class="form-group">
+            <label>Nombre Completo</label>
+            <input type="text" class="form-control" formControlName="nombreCompleto" required>
+            <div *ngIf="submitted && formClient.controls.nombreCompleto.errors" class="has-error">
+            </div>
           </div>
-        </div>
-      </form>
+</form>
       <div class="col-sm-6" style="text-align: end;">
         <button type="button" class="btn btn-primary" (click)="aceptar()"
                 [disabled]="!formClient.valid">

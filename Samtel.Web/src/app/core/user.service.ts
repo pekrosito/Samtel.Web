@@ -37,8 +37,8 @@ export class UserService {
         })
       );
   }*/
-  getSinVariableDos(): Observable<any> {
-    return this.http.get<any>(`${this.url + '/getClients'}`, httpOptions)
+  getClients(): Observable<any> {
+    return this.http.get<any>(`${this.url + 'getClients'}`, httpOptions)
       .pipe(
         timeout(3000),
         map(res => {
