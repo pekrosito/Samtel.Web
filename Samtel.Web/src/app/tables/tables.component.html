@@ -1,4 +1,6 @@
+
 <p>tables works!</p>
+<!---
 <div class="row">
   <div class="col-sm-12 col-md-12 col-lg-12 form-group">
     <div class="">
@@ -28,3 +30,104 @@
     </div>
   </div>
 </div>
+======= -->
+<div class="container">
+
+  <div class="row">
+    <div class="col-sm-12 col-md-12 col-lg-12  form-group">
+      <div class="">
+        <table class="table table-hover">
+          <thead class="thead-dark" id="title">
+          <th scope="col">Nombre Completo</th>
+          <th scope="col">Tipo de Identificación</th>
+          <th scope="col">Identificación</th>
+          <th scope="col">Numero de identificación</th>
+          <th scope="col">Ocupación</th>
+          <th scope="col" colspan="2">Acción</th>
+          </thead>
+          <tbody id="tbody">
+            <tr *ngFor="let client of clients; let i = index" [ngClass]="{'selected': client.edit}">
+              <td>{{ client.nombre_completo }}</td>
+              <td>{{ client.codigo_tipo_ident }}</td>
+              <td>
+                <select class="form-control" (change)="changeTypeIdentification($event, client)">
+                  <option value="" disabled>Seleccione una opcion</option>
+                  <option *ngFor="let identification of identifications" [ngValue]="identification">{{identification.description}}</option>
+                </select>
+              </td>
+              <td><input value="{{ client.numero_identificacion }}" (change)="changeIdentification()" /> </td>
+              <td>
+                <select class="form-control" (change)="changeTypeOcupation($event, client)" >
+                  <option value="" disabled>Seleccione una opcion</option>
+                  <option *ngFor="let ocupation of ocupations" [ngValue]="ocupation">{{ocupation.description}}</option>
+                </select>
+                
+              </td>
+              <td>
+                <button type="button" class="btn btn-default btn-sm" id="btneditar" (click)="editClient(client)">
+                  Editar
+                </button>
+              </td>
+              <td>
+                <button type="button" class="btn btn-default btn-sm" id="btneliminar"(click)="deleteClient(client, i)">
+                  Eliminar
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+<style>
+  .selected {
+    background: #ff0000;
+  }
+  #btneditar {
+    background: -webkit-linear-gradient(top, rgba(179,220,237,1) 0%, rgba(41,184,229,1) 50%, rgba(188,224,238,1) 100%);
+     }
+  #btneditar:hover {
+    background: -webkit-linear-gradient(top, rgba(179,220,237,1) 0%, rgba(41,184,229,1) 22%, rgba(41,185,229,1) 35%, rgba(214,245,255,1) 50%, rgba(41,185,229,1) 65%, rgba(41,185,229,1) 81%, rgba(188,224,238,1) 100%);
+    font-weight:bold;
+  }
+  #btneliminar:hover {
+    background: -webkit-linear-gradient(top, rgba(243,226,199,1) 0%, rgba(173,2,2,1) 20%, rgba(173,2,2,1) 34%, rgba(250,132,142,1) 51%, rgba(173,2,2,1) 66%, rgba(173,2,2,1) 78%, rgba(233,212,179,1) 100%);
+    font-weight: bold;
+    font-style: italic;
+    color: white;
+  }
+  #btneliminar {
+    background: -webkit-linear-gradient(top, rgba(243,226,199,1) 0%, rgba(173,2,2,1) 41%, rgba(173,2,2,1) 64%, rgba(233,212,179,1) 100%);
+    font-weight: bold;
+    font-style: italic;
+    color: antiquewhite;
+   ;
+  }
+  #title {
+    font-size:3vmin;
+    font-style: italic;
+    font-weight:bold;
+
+    }
+  button {
+    font-size: 2vmin;
+    height: 4vmin;
+    width: 10vmin
+  }
+#tbody {
+  font-family: "Comic Sans MS",Helvetica,Lucida,sans-serif;
+  font-size:2vmin;
+}
+  select {
+    font-family: 'Lucida Casual', 'Comic Sans MS';
+    width: auto;
+    font-size:2vmin;
+  }
+  input {
+    width: auto;
+    font-size: 2vmin;
+  }
+
+</style>
+

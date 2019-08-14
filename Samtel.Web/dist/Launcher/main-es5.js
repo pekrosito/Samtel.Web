@@ -34,6 +34,17 @@ module.exports = "<app-nav></app-nav>\r\n<section>\r\n  <router-outlet></router-
 
 /***/ }),
 
+/***/ "./node_modules/raw-loader/index.js!./src/app/clients/clients.component.html":
+/*!**************************************************************************!*\
+  !*** ./node_modules/raw-loader!./src/app/clients/clients.component.html ***!
+  \**************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<p>clients works!</p>\r\n"
+
+/***/ }),
+
 /***/ "./node_modules/raw-loader/index.js!./src/app/controls/controls.component.html":
 /*!****************************************************************************!*\
   !*** ./node_modules/raw-loader!./src/app/controls/controls.component.html ***!
@@ -52,7 +63,7 @@ module.exports = "<p>controls works!</p>\r\n"
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\r\n<div class=\"container\">\r\n\r\n      <div class=\"row\">\r\n        <div class=\"col-sm-12 col-md-12 col-lg-12  form-group\">\r\n          <form [formGroup]=\"formPerson\">\r\n            <div class=\"form-group\">\r\n              <label>Nombre</label>\r\n              <input type=\"text\" class=\"form-control\" formControlName=\"nombre\" required>\r\n              <div *ngIf=\"submitted && formPerson.controls.nombre.errors\" class=\"has-error\">\r\n                <div *ngIf=\"formPerson.controls.nombre.errors.required\">Nombre requerido</div>\r\n              </div>\r\n            </div>\r\n            <div class=\"form-group\">\r\n              <label>Apellido</label>\r\n              <input type=\"text\" class=\"form-control\" formControlName=\"apellido\" required>\r\n              <div *ngIf=\"submitted && formPerson.controls.apellido.errors\" class=\"has-error\">\r\n                <div *ngIf=\"formPerson.controls.apellido.errors.required\">Apellido requerido</div>\r\n              </div>\r\n            </div>\r\n          </form>\r\n          <div class=\"col-sm-6\" style=\"text-align: end;\">\r\n            <button type=\"button\" class=\"btn btn-primary\" (click)=\"aceptar()\"\r\n                    [disabled]=\"!formPerson.valid\">Guardar</button>\r\n          </div>\r\n        </div>\r\n      </div>\r\n    \r\n</div>\r\n"
+module.exports = "\r\n<div class=\"container\">\r\n\r\n      <div class=\"row\">\r\n        <div class=\"col-sm-12 col-md-12 col-lg-12  form-group\">\r\n          <form [formGroup]=\"formPerson\">\r\n            <div class=\"form-group\">\r\n              <label>Nombre</label>\r\n              <input type=\"text\" class=\"form-control\" formControlName=\"nombre\" required>\r\n              <div *ngIf=\"submitted && formPerson.controls.nombre.errors\" class=\"has-error\">\r\n                <div *ngIf=\"formPerson.controls.nombre.errors.required\">Nombre requerido</div>\r\n              </div>\r\n            </div>\r\n            <div class=\"form-group\">\r\n              <label>Apellido</label>\r\n              <input type=\"text\" class=\"form-control\" formControlName=\"apellido\" required>\r\n              <div *ngIf=\"submitted && formPerson.controls.apellido.errors\" class=\"has-error\">\r\n                <div *ngIf=\"formPerson.controls.apellido.errors.required\">Apellido requerido</div>\r\n              </div>\r\n            </div>\r\n            <div class=\"form-group\">\r\n              <label>Genero</label>\r\n              <select class=\"form-control\" (change)=\"changeUser($event)\" formControlName=\"user\">\r\n                <option value=\"\" disabled>Seleccione una opcion</option>\r\n                <option *ngFor=\"let user of users\" [ngValue]=\"user\">{{user.nombre}} {{user.apellido}}</option>\r\n              </select>\r\n            </div>\r\n          </form>\r\n          <div class=\"col-sm-6\" style=\"text-align: end;\">\r\n            <button type=\"button\" class=\"btn btn-primary\" (click)=\"aceptar()\"\r\n                    [disabled]=\"!formPerson.valid\">Guardar</button>\r\n          </div>\r\n        </div>\r\n      </div>\r\n    \r\n</div>\r\n"
 
 /***/ }),
 
@@ -85,7 +96,7 @@ module.exports = "<div>\r\n  <nav class=\"navbar navbar-default\">\r\n    <div c
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<p>tables works!</p>\r\n<div class=\"row\">\r\n  <div class=\"col-sm-12 col-md-12 col-lg-12 form-group\">\r\n    <div class=\"\">\r\n      <table class=\"table table-hover\">\r\n        <thead class=\"thead-dark\">\r\n        <th scope=\"col\">Nombre</th>\r\n        <th scope=\"col\">Apellido</th>\r\n        <th scope=\"col\" colspan=\"2\">Acción</th>\r\n        </thead>\r\n        <tbody>\r\n          <tr *ngFor=\"let user of users; let i = index\" [ngClass]=\"{'selected': user.edit}\">\r\n            <td>{{ user.nombre }}</td>\r\n            <td>{{ user.apellido }}</td>\r\n            <td>\r\n              <button type=\"button\" class=\"btn btn-default btn-sm\" (click)=\"editUser(user)\">\r\n                Editar\r\n              </button>\r\n            </td>\r\n            <td>\r\n              <button type=\"button\" class=\"btn btn-default btn-sm\" (click)=\"deleteUser(user, i)\">\r\n                Eliminar\r\n              </button>\r\n            </td>\r\n          </tr>\r\n        </tbody>\r\n      </table>\r\n    </div>\r\n  </div>\r\n</div>\r\n"
+module.exports = "\r\n<p>tables works!</p>\r\n<!---\r\n<div class=\"row\">\r\n  <div class=\"col-sm-12 col-md-12 col-lg-12 form-group\">\r\n    <div class=\"\">\r\n      <table class=\"table table-hover\">\r\n        <thead class=\"thead-dark\">\r\n        <th scope=\"col\">Nombre</th>\r\n        <th scope=\"col\">Apellido</th>\r\n        <th scope=\"col\" colspan=\"2\">Acción</th>\r\n        </thead>\r\n        <tbody>\r\n          <tr *ngFor=\"let user of users; let i = index\" [ngClass]=\"{'selected': user.edit}\">\r\n            <td>{{ user.nombre }}</td>\r\n            <td>{{ user.apellido }}</td>\r\n            <td>\r\n              <button type=\"button\" class=\"btn btn-default btn-sm\" (click)=\"editUser(user)\">\r\n                Editar\r\n              </button>\r\n            </td>\r\n            <td>\r\n              <button type=\"button\" class=\"btn btn-default btn-sm\" (click)=\"deleteUser(user, i)\">\r\n                Eliminar\r\n              </button>\r\n            </td>\r\n          </tr>\r\n        </tbody>\r\n      </table>\r\n    </div>\r\n  </div>\r\n</div>\r\n======= -->\r\n<div class=\"container\">\r\n\r\n  <div class=\"row\">\r\n    <div class=\"col-sm-12 col-md-12 col-lg-12  form-group\">\r\n      <div class=\"\">\r\n        <table class=\"table table-hover\">\r\n          <thead class=\"thead-dark\">\r\n          <th scope=\"col\">Nombre Completo</th>\r\n          <th scope=\"col\">Tipo de Identificación</th>\r\n          <th scope=\"col\">Identificación</th>\r\n          <th scope=\"col\">Numero de identificación</th>\r\n          <th scope=\"col\">Ocupación</th>\r\n          <th scope=\"col\" colspan=\"2\">Acción</th>\r\n          </thead>\r\n          <tbody>\r\n            <tr *ngFor=\"let client of clients; let i = index\" [ngClass]=\"{'selected': client.edit}\">\r\n              <td>{{ client.nombre_completo }}</td>\r\n              <td>{{ client.codigo_tipo_ident }}</td>\r\n              <td>\r\n                <select class=\"form-control\" (change)=\"changeTypeIdentification($event, client)\">\r\n                  <option value=\"\" disabled>Seleccione una opcion</option>\r\n                  <option *ngFor=\"let identification of identifications\" [ngValue]=\"identification\">{{identification.description}}</option>\r\n                </select>\r\n              </td>\r\n              <td><input value=\"{{ client.numero_identificacion }}\" (change)=\"changeIdentification()\" /> </td>\r\n              <td>\r\n                <select class=\"form-control\" (change)=\"changeTypeOcupation($event, client)\">\r\n                  <option value=\"\" disabled>Seleccione una opcion</option>\r\n                  <option *ngFor=\"let ocupation of ocupations\" [ngValue]=\"ocupation\">{{ocupation.description}}</option>\r\n                </select>\r\n                \r\n              </td>\r\n              <td>\r\n                <button type=\"button\" class=\"btn btn-default btn-sm\" (click)=\"editClient(client)\">\r\n                  Editar\r\n                </button>\r\n              </td>\r\n              <td>\r\n                <button type=\"button\" class=\"btn btn-default btn-sm\" (click)=\"deleteClient(client, i)\">\r\n                  Eliminar\r\n                </button>\r\n              </td>\r\n            </tr>\r\n          </tbody>\r\n        </table>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</div>\r\n<style>\r\n  .selected {\r\n    background: #ff0000;\r\n  }\r\n</style>\r\n\r\n"
 
 /***/ }),
 
@@ -106,6 +117,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _home_home_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./home/home.component */ "./src/app/home/home.component.ts");
 /* harmony import */ var _controls_controls_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./controls/controls.component */ "./src/app/controls/controls.component.ts");
 /* harmony import */ var _tables_tables_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./tables/tables.component */ "./src/app/tables/tables.component.ts");
+/* harmony import */ var _clients_clients_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./clients/clients.component */ "./src/app/clients/clients.component.ts");
+
 
 
 
@@ -117,7 +130,8 @@ var routes = [
     { path: '', component: _home_home_component__WEBPACK_IMPORTED_MODULE_4__["HomeComponent"] },
     { path: 'controls', component: _controls_controls_component__WEBPACK_IMPORTED_MODULE_5__["ControlsComponent"] },
     { path: 'tables', component: _tables_tables_component__WEBPACK_IMPORTED_MODULE_6__["TablesComponent"] },
-    { path: 'forms', component: _forms_forms_component__WEBPACK_IMPORTED_MODULE_3__["FormsComponent"] }
+    { path: 'forms', component: _forms_forms_component__WEBPACK_IMPORTED_MODULE_3__["FormsComponent"] },
+    { path: 'clients', component: _clients_clients_component__WEBPACK_IMPORTED_MODULE_7__["ClientsComponent"] }
 ];
 var AppRoutingModule = /** @class */ (function () {
     function AppRoutingModule() {
@@ -191,6 +205,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _controls_controls_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./controls/controls.component */ "./src/app/controls/controls.component.ts");
 /* harmony import */ var _tables_tables_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./tables/tables.component */ "./src/app/tables/tables.component.ts");
 /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
+/* harmony import */ var _clients_clients_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./clients/clients.component */ "./src/app/clients/clients.component.ts");
+
 
 
 
@@ -217,7 +233,8 @@ var AppModule = /** @class */ (function () {
                 _home_home_component__WEBPACK_IMPORTED_MODULE_7__["HomeComponent"],
                 _nav_nav_component__WEBPACK_IMPORTED_MODULE_8__["NavComponent"],
                 _controls_controls_component__WEBPACK_IMPORTED_MODULE_12__["ControlsComponent"],
-                _tables_tables_component__WEBPACK_IMPORTED_MODULE_13__["TablesComponent"]
+                _tables_tables_component__WEBPACK_IMPORTED_MODULE_13__["TablesComponent"],
+                _clients_clients_component__WEBPACK_IMPORTED_MODULE_15__["ClientsComponent"]
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"],
@@ -234,6 +251,70 @@ var AppModule = /** @class */ (function () {
         })
     ], AppModule);
     return AppModule;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/clients/clients.component.ts":
+/*!**********************************************!*\
+  !*** ./src/app/clients/clients.component.ts ***!
+  \**********************************************/
+/*! exports provided: ClientsComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ClientsComponent", function() { return ClientsComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _notifications_notifications_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../notifications/notifications.component */ "./src/app/notifications/notifications.component.ts");
+/* harmony import */ var _core_client_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../core/client.service */ "./src/app/core/client.service.ts");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
+
+
+
+
+
+var ClientsComponent = /** @class */ (function () {
+    function ClientsComponent(api, notificationsServices, FB) {
+        this.api = api;
+        this.notificationsServices = notificationsServices;
+        this.FB = FB;
+    }
+    ClientsComponent.prototype.ngOnInit = function () {
+        this.load();
+    };
+    ClientsComponent.prototype.load = function () {
+        var _this = this;
+        this.api.getClients().subscribe(function (response) {
+            _this.clients = response.map(function (client) {
+                client.nombreCompleto = client.nombre + " -- " + client.apellido;
+                return client;
+            });
+            _this.setData(response);
+        }, function (error) {
+            console.log("Error");
+            _this.notificationsServices.toast("error!");
+        });
+    };
+    ClientsComponent.prototype.setData = function (response) {
+        // this.formPerson.get('nombre').setValue(response[0].nombre);
+        //this.formPerson.get('apellido').setValue(response[0].apellido);
+    };
+    ClientsComponent.ctorParameters = function () { return [
+        { type: _core_client_service__WEBPACK_IMPORTED_MODULE_3__["ClientService"] },
+        { type: _notifications_notifications_component__WEBPACK_IMPORTED_MODULE_2__["NotificationsService"] },
+        { type: _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormBuilder"] }
+    ]; };
+    ClientsComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-clients',
+            template: __webpack_require__(/*! raw-loader!./clients.component.html */ "./node_modules/raw-loader/index.js!./src/app/clients/clients.component.html")
+        })
+    ], ClientsComponent);
+    return ClientsComponent;
 }());
 
 
@@ -272,6 +353,135 @@ var ControlsComponent = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/app/core/client.service.ts":
+/*!****************************************!*\
+  !*** ./src/app/core/client.service.ts ***!
+  \****************************************/
+/*! exports provided: ClientService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ClientService", function() { return ClientService; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+/* harmony import */ var rxjs_Observable__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs/Observable */ "./node_modules/rxjs-compat/_esm5/Observable.js");
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
+
+
+
+
+
+
+var httpOptions = {
+    headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
+        'Content-Type': 'application/json',
+        'Authorization': '123456',
+        'X-System': 'Desktop'
+    })
+};
+var ClientService = /** @class */ (function () {
+    function ClientService(http) {
+        this.http = http;
+        this.url = "http://localhost:2458/v1/Client/";
+    }
+    ClientService.prototype.getClients = function () {
+        return this.http.get("" + (this.url + 'getClients'), httpOptions)
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["timeout"])(3000), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])(function (res) {
+            return res;
+        }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(function (err) {
+            /*if (err.name === 'TimeoutError') {
+              this.fallback(data);
+            }*/
+            return rxjs_Observable__WEBPACK_IMPORTED_MODULE_3__["Observable"].throw(err);
+        }));
+    };
+    ClientService.ctorParameters = function () { return [
+        { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"] }
+    ]; };
+    ClientService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
+            providedIn: 'root'
+        })
+    ], ClientService);
+    return ClientService;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/core/general.service.ts":
+/*!*****************************************!*\
+  !*** ./src/app/core/general.service.ts ***!
+  \*****************************************/
+/*! exports provided: GeneralService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GeneralService", function() { return GeneralService; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+/* harmony import */ var rxjs_Observable__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs/Observable */ "./node_modules/rxjs-compat/_esm5/Observable.js");
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
+
+
+
+
+
+
+var httpOptions = {
+    headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
+        'Content-Type': 'application/json',
+        'Authorization': '123456',
+        'X-System': 'Desktop'
+    })
+};
+var GeneralService = /** @class */ (function () {
+    function GeneralService(http) {
+        this.http = http;
+        this.url = "http://localhost:2458/v1/general/";
+    }
+    GeneralService.prototype.getIdentification = function () {
+        return this.http.get("" + (this.url + 'getIdentification'), httpOptions)
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["timeout"])(3000), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])(function (res) {
+            return res;
+        }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(function (err) {
+            /*if (err.name === 'TimeoutError') {
+              this.fallback(data);
+            }*/
+            return rxjs_Observable__WEBPACK_IMPORTED_MODULE_3__["Observable"].throw(err);
+        }));
+    };
+    GeneralService.prototype.getOcupations = function () {
+        return this.http.get("" + (this.url + 'getOcupations'), httpOptions)
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["timeout"])(3000), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])(function (res) {
+            return res;
+        }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(function (err) {
+            /*if (err.name === 'TimeoutError') {
+              this.fallback(data);
+            }*/
+            return rxjs_Observable__WEBPACK_IMPORTED_MODULE_3__["Observable"].throw(err);
+        }));
+    };
+    GeneralService.ctorParameters = function () { return [
+        { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"] }
+    ]; };
+    GeneralService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
+            providedIn: 'root'
+        })
+    ], GeneralService);
+    return GeneralService;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/core/user.service.ts":
 /*!**************************************!*\
   !*** ./src/app/core/user.service.ts ***!
@@ -303,7 +513,7 @@ var httpOptions = {
 var UserService = /** @class */ (function () {
     function UserService(http) {
         this.http = http;
-        this.url = "http://localhost:2458/v1/test/";
+        this.url = "http://localhost:2458/v1/test";
     }
     UserService.prototype.getSinVariable = function () {
         return this.http.get("" + (this.url + '/metodoGetSinVariable'), httpOptions)
@@ -369,9 +579,10 @@ var FormsComponent = /** @class */ (function () {
     FormsComponent.prototype.load = function () {
         var _this = this;
         this.api.getSinVariable().subscribe(function (response) {
-            response = response.map(function (users) {
-                users.edad = 1993;
-                return users;
+            _this.users = response.map(function (persona) {
+                persona.edad = 1993;
+                persona.nombreCompleto = persona.nombre + " -- " + persona.apellido;
+                return persona;
             });
             _this.setData(response);
         }, function (error) {
@@ -381,8 +592,9 @@ var FormsComponent = /** @class */ (function () {
     };
     FormsComponent.prototype.loadComponent = function () {
         this.formPerson = this.FB.group({
-            nombre: new _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormControl"]({ value: '', disable: false }, _angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].required),
-            apellido: new _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormControl"]({ value: '', disable: false }, _angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].required)
+            nombre: new _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormControl"]({}, _angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].required),
+            apellido: new _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormControl"]({}, _angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].required),
+            user: new _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormControl"]({}, _angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].required)
         });
     };
     FormsComponent.prototype.aceptar = function () {
@@ -392,7 +604,10 @@ var FormsComponent = /** @class */ (function () {
         if (this.formPerson.invalid) {
             return;
         }
-        this.api.metodoPutActualizar(this.formPerson.value).subscribe(function (response) { console.log("respnse", response); }, function (error) { _this.notificationsServices.toast("error!"); });
+        this.api.metodoPutActualizar(this.formPerson.value).subscribe(function (response) { console.log("respnse", response); }, function (error) { _this.notificationsServices.toast("error!"); console.log("error", error); });
+    };
+    FormsComponent.prototype.changeUser = function (event) {
+        console.log("event", event);
     };
     FormsComponent.prototype.setData = function (response) {
         this.formPerson.get('nombre').setValue(response[0].nombre);
@@ -543,15 +758,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TablesComponent", function() { return TablesComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _core_user_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./../core/user.service */ "./src/app/core/user.service.ts");
-/* harmony import */ var _notifications_notifications_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./../notifications/notifications.component */ "./src/app/notifications/notifications.component.ts");
+/* harmony import */ var _notifications_notifications_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./../notifications/notifications.component */ "./src/app/notifications/notifications.component.ts");
+/* harmony import */ var _core_client_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../core/client.service */ "./src/app/core/client.service.ts");
+/* harmony import */ var _core_general_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../core/general.service */ "./src/app/core/general.service.ts");
+
 
 
 
 
 var TablesComponent = /** @class */ (function () {
-    function TablesComponent(api, notificationsServices) {
-        this.api = api;
+    function TablesComponent(clientService, generalService, notificationsServices) {
+        this.clientService = clientService;
+        this.generalService = generalService;
         this.notificationsServices = notificationsServices;
     }
     TablesComponent.prototype.ngOnInit = function () {
@@ -559,33 +777,82 @@ var TablesComponent = /** @class */ (function () {
     };
     TablesComponent.prototype.load = function () {
         var _this = this;
-        this.api.getSinVariable().subscribe(function (response) {
-            _this.users = response.map(function (user) {
-                user.edad = 1993;
-                user.nombreCompleto = user.nombre + " -- " + user.apellido;
-                user.edit = false;
-                return user;
+        this.getIdentification(function (identification) {
+            _this.identifications = identification;
+            console.log(identification);
+            _this.getOcupations(function (ocupation) {
+                _this.ocupations = ocupation;
+                console.log(ocupation);
+                _this.getClients(function (client) {
+                    _this.clients = client;
+                    console.log(client);
+                });
             });
-            console.log("  this.users ", _this.users);
+        });
+    };
+    TablesComponent.prototype.getIdentification = function (callBack) {
+        var _this = this;
+        this.generalService.getIdentification().subscribe(function (response) {
+            if (callBack) {
+                return callBack(response);
+            }
+        }, function (error) {
+            console.log("Error");
+            _this.notificationsServices.toast("Error al consultar la información de identificación!");
+        });
+    };
+    TablesComponent.prototype.getOcupations = function (callBack) {
+        var _this = this;
+        this.generalService.getOcupations().subscribe(function (response) {
+            if (callBack) {
+                return callBack(response);
+            }
+        }, function (error) {
+            console.log("Error");
+            _this.notificationsServices.toast("Error al consultar la información de Ocupacion!");
+        });
+    };
+    TablesComponent.prototype.getClients = function (callBack) {
+        var _this = this;
+        this.clientService.getClients().subscribe(function (response) {
+            if (callBack) {
+                return callBack(response);
+            }
         }, function (error) {
             console.log("Error");
             _this.notificationsServices.toast("error!");
+            _this.notificationsServices.toast("Error al consultar la información de clientes!");
         });
     };
-    TablesComponent.prototype.editUser = function (user) {
-        console.log("event", user);
-        user.edit = false;
+    TablesComponent.prototype.editClient = function (client) {
+        console.log("event", client);
+        client.edit = false;
     };
-    TablesComponent.prototype.deleteUser = function (user, index) {
+    TablesComponent.prototype.deleteClient = function (client, index) {
         console.log("i", index);
-        console.log("user", user);
-        this.notificationsServices.toast("El usuario " + user.nombre + " fue eliminado satisfactoriamente");
+        console.log("client", client);
+        this.notificationsServices.toast("El usuario " + client.nombre_completo + " fue eliminado satisfactoriamente");
         //this.users.splice(index,1);
-        user.edit = true;
+        client.edit = true;
+    };
+    TablesComponent.prototype.changeIdentification = function () {
+        console.log("event");
+    };
+    TablesComponent.prototype.changeOcupation = function () {
+        console.log("event");
+    };
+    TablesComponent.prototype.changeTypeIdentification = function (event, client) {
+        console.log("identification", event.srcElement.value);
+        console.log("client", client);
+    };
+    TablesComponent.prototype.changeTypeOcupation = function (event, client) {
+        console.log("ocupation", event.srcElement.value);
+        console.log("client", client);
     };
     TablesComponent.ctorParameters = function () { return [
-        { type: _core_user_service__WEBPACK_IMPORTED_MODULE_2__["UserService"] },
-        { type: _notifications_notifications_component__WEBPACK_IMPORTED_MODULE_3__["NotificationsService"] }
+        { type: _core_client_service__WEBPACK_IMPORTED_MODULE_3__["ClientService"] },
+        { type: _core_general_service__WEBPACK_IMPORTED_MODULE_4__["GeneralService"] },
+        { type: _notifications_notifications_component__WEBPACK_IMPORTED_MODULE_2__["NotificationsService"] }
     ]; };
     TablesComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({

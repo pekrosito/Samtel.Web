@@ -1,37 +1,83 @@
 import * as tslib_1 from "tslib";
 import { Component } from '@angular/core';
 let TablesComponent = class TablesComponent {
-    constructor(api, notificationsServices) {
-        this.api = api;
+    constructor(clientService, generalService, notificationsServices) {
+        this.clientService = clientService;
+        this.generalService = generalService;
         this.notificationsServices = notificationsServices;
     }
     ngOnInit() {
         this.load();
     }
     load() {
-        this.api.getSinVariable().subscribe(response => {
-            this.users = response.map(user => {
-                user.edad = 1993;
-                user.nombreCompleto = user.nombre + " -- " + user.apellido;
-                user.edit = false;
-                return user;
+        this.getIdentification((identification) => {
+            this.identifications = identification;
+            console.log(identification);
+            this.getOcupations((ocupation) => {
+                this.ocupations = ocupation;
+                console.log(ocupation);
+                this.getClients((client) => {
+                    this.clients = client;
+                    console.log(client);
+                });
             });
-            console.log("  this.users ", this.users);
+        });
+    }
+    getIdentification(callBack) {
+        this.generalService.getIdentification().subscribe(response => {
+            if (callBack) {
+                return callBack(response);
+            }
+        }, error => {
+            console.log("Error");
+            this.notificationsServices.toast("Error al consultar la información de identificación!");
+        });
+    }
+    getOcupations(callBack) {
+        this.generalService.getOcupations().subscribe(response => {
+            if (callBack) {
+                return callBack(response);
+            }
+        }, error => {
+            console.log("Error");
+            this.notificationsServices.toast("Error al consultar la información de Ocupacion!");
+        });
+    }
+    getClients(callBack) {
+        this.clientService.getClients().subscribe(response => {
+            if (callBack) {
+                return callBack(response);
+            }
         }, error => {
             console.log("Error");
             this.notificationsServices.toast("error!");
+            this.notificationsServices.toast("Error al consultar la información de clientes!");
         });
     }
-    editUser(user) {
-        console.log("event", user);
-        user.edit = false;
+    editClient(client) {
+        console.log("event", client);
+        client.edit = false;
     }
-    deleteUser(user, index) {
+    deleteClient(client, index) {
         console.log("i", index);
-        console.log("user", user);
-        this.notificationsServices.toast("El usuario " + user.nombre + " fue eliminado satisfactoriamente");
+        console.log("client", client);
+        this.notificationsServices.toast("El usuario " + client.nombre_completo + " fue eliminado satisfactoriamente");
         //this.users.splice(index,1);
-        user.edit = true;
+        client.edit = true;
+    }
+    changeIdentification() {
+        console.log("event");
+    }
+    changeOcupation() {
+        console.log("event");
+    }
+    changeTypeIdentification(event, client) {
+        console.log("identification", event.srcElement.value);
+        console.log("client", client);
+    }
+    changeTypeOcupation(event, client) {
+        console.log("ocupation", event.srcElement.value);
+        console.log("client", client);
     }
 };
 TablesComponent = tslib_1.__decorate([

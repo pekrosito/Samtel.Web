@@ -13,6 +13,7 @@ import { NotificationsService } from './notifications/notifications.component';
 import { ControlsComponent } from './controls/controls.component';
 import { TablesComponent } from './tables/tables.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ClientsComponent } from './clients/clients.component';
 let AppModule = class AppModule {
 };
 AppModule = tslib_1.__decorate([
@@ -23,7 +24,8 @@ AppModule = tslib_1.__decorate([
             HomeComponent,
             NavComponent,
             ControlsComponent,
-            TablesComponent
+            TablesComponent,
+            ClientsComponent
         ],
         imports: [
             BrowserModule,
