@@ -11,26 +11,24 @@ import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms'
 export class FormsComponent implements OnInit {
   formPerson: FormGroup;
   submitted = false;
+  users: any;
 
   constructor(private api: UserService, public notificationsServices: NotificationsService,  private FB: FormBuilder) { }
 
   ngOnInit() {
     this.loadComponent();
     this.load();
-  
   }
 
   load() {
     this.api.getSinVariable().subscribe(
-
-      response => {
-        response = response.map(users => {
-        users.edad = 1993;
-        return users;
+      response => {        
+        this.users = response.map(persona => {
+          persona.edad = 1993;
+          persona.nombreCompleto = persona.nombre + " -- " + persona.apellido;
+          return persona;
       });
         this.setData(response);
-
-   
       },
       error => {
         console.log("Error");
@@ -41,8 +39,9 @@ export class FormsComponent implements OnInit {
 
   loadComponent() {
     this.formPerson = this.FB.group({
-      nombre: new FormControl({ value: '', disable: false }, Validators.required),
-      apellido: new FormControl({ value: '', disable: false }, Validators.required)
+      nombre: new FormControl({}, Validators.required),
+      apellido: new FormControl({}, Validators.required),
+      user: new FormControl({}, Validators.required)
     })
   }
 
@@ -56,15 +55,18 @@ export class FormsComponent implements OnInit {
     }
    
     this.api.metodoPutActualizar(this.formPerson.value).subscribe(
-      response => { console.log("respnse", response)},
-      error => { this.notificationsServices.toast("error!"); }
+      response => {  console.log("respnse", response)},
+      error => { this.notificationsServices.toast("error!"); console.log("error", error)}
     );
 
+  }
+
+  changeUser(event) {
+    console.log("event", event)
   }
 
   setData(response) {
     this.formPerson.get('nombre').setValue(response[0].nombre);
     this.formPerson.get('apellido').setValue(response[0].apellido);
   }
-
 }

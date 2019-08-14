@@ -1,42 +1,82 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from './../core/user.service';
-import { GeneralService } from './../core/general.service';
 import { NotificationsService } from './../notifications/notifications.component';
+import { ClientService } from '../core/client.service';
+import { GeneralService } from '../core/general.service';
 
 @Component({
   selector: 'app-tables',
   templateUrl: './tables.component.html',
-  styles: []
+  styles: ['./tables.component.scss']
 })
 export class TablesComponent implements OnInit {
   clients: any;
   identifications: any;
-  constructor(private api: UserService, public notificationsServices: NotificationsService, private api2: GeneralService) { }
+  ocupations: any;
+  cedula: any;
+ 
+
+  constructor(private clientService: ClientService, private generalService: GeneralService, public notificationsServices: NotificationsService) { }
 
   ngOnInit() {
     this.load();
   }
-  //lo que me retorna el getClients me lo asigna a la variable this.clients eso es callBack
+
   load() {
-    this.getIdentifications((iden) => {
-      this.identifications = iden;
-      
-   
-    this.getClients((clients) => {
-      this.clients = clients;
-      console.log(clients)
-    })
+    this.getIdentifications((identification) => {
+      this.identifications = identification;
+      console.log(identification)
+
+      this.getOcupations((ocupations) => {
+        this.ocupations = ocupations;
+        console.log(ocupations)
+
+        this.getClients((clients)  => {
+          this.clients = clients;
+          console.log(clients)
+        })
+      })
     })
   }
-  getIdentifications(callBack) {
-    this.api2.getIdentifications().subscribe(
 
+  getIdentifications(callBack) {
+    this.generalService.getIdentifications().subscribe(
       response => {
-              
+        response = response.map(iden => {
+          iden.id = iden.description == "NUMERO DE IDENTIFICACION TRIBUTARIA" ? 1 : iden.id;
+          return iden;
+        })
+        console.log(response)
+        if (callBack) {
+          return callBack(response);
+        }
+      },
+      error => {
+        console.log("Error");
+        this.notificationsServices.toast("Error al consultar la información de identificación!");
+      }
+    )
+  }
+
+  getOcupations(callBack) {
+    this.generalService.getOcupations().subscribe(
+      response => {
+        if (callBack) {
+          return callBack(response);
+        }
+      },
+      error => {
+        console.log("Error");
+        this.notificationsServices.toast("Error al consultar la información de identificación!");
+      }
+    )
+  }
+
+  getClients(callBack) {
+    this.clientService.getClients().subscribe(
+      response => {
         if (callBack) {
           return callBack(response)
         }
-
       },
       error => {
         console.log("Error");
@@ -44,48 +84,25 @@ export class TablesComponent implements OnInit {
       }
     )
   }
-  getClients(callBack) {
-    this.api.getSinVariable().subscribe(
 
-      response => {
-
-        console.log("esto me retorno", response);
-        this.clients = response.map(client => {
-          client.edit = false;
-          return client;
-        });
-        console.log("this.client", this.clients);
-        if (callBack) {
-          return callBack(response)
-        }    
-       
-      },
-      error => {
-        console.log("Error");
-        this.notificationsServices.toast("error!");
-      }
-    )
-  }
-  editUser(user) {
-    console.log("event", user)
-    user.edit = false;
+  editClient(client) {
+    console.log("event", client)
+    client.edit = false;
   }
 
-  deleteUser(user, index) {
+  deleteClient(client, index) {
     console.log("i", index)
-    console.log("user", user)
-    this.notificationsServices.toast("El usuario " + user.codNaturaleza + " fue eliminado satisfactoriamente");
+    console.log("client", client)
+    this.notificationsServices.toast("El usuario " + client.nombreCompleto + " fue eliminado satisfactoriamente");
     //this.users.splice(index,1);
-    user.edit = true;
+    client.edit = true;
   }
+
   changeIdentification(event) {
-    console.log("Identificacion", event.srcElement.value);
-  
-  
+      console.log("event", (<HTMLInputElement>event.target).value )
   }
-  changeTypeIdentification(event, client) {
-    console.log("client", client);
-    console.log("Identificacion", event.srcElement.value);
+
+  changeTypeIdentification(event) {
+    console.log("identification", (<HTMLInputElement>event.target).value )
   }
-  
 }

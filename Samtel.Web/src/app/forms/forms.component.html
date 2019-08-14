@@ -7,7 +7,7 @@
             <div class="form-group">
               <label>Nombre</label>
               <input type="text" class="form-control" formControlName="nombre" required>
-              <div *ngIf="formPerson.controls.nombre.errors" class="has-error">
+              <div *ngIf="submitted && formPerson.controls.nombre.errors" class="has-error">
                 <div *ngIf="formPerson.controls.nombre.errors.required">Nombre requerido</div>
               </div>
             </div>
