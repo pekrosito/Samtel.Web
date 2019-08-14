@@ -20,8 +20,8 @@ export class GeneralService {
 
   constructor(private http: HttpClient) { }
 
-  getIdentifications(): Observable<any> {
-    return this.http.get<any>(`${this.url + 'getIdentifications'}`, httpOptions)
+  getIdentification(): Observable<any> {
+    return this.http.get<any>(`${this.url + 'getIdentification'}`, httpOptions)
       .pipe(
         timeout(3000),
         map(res => {

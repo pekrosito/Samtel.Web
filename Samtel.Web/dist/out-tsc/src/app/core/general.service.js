@@ -11,13 +11,24 @@ const httpOptions = {
         'X-System': 'Desktop'
     })
 };
-let ClientService = class ClientService {
+let GeneralService = class GeneralService {
     constructor(http) {
         this.http = http;
-        this.url = "http://localhost:2458/v1/Client/";
+        this.url = "http://localhost:2458/v1/general/";
     }
-    getClients() {
-        return this.http.get(`${this.url + 'getClients'}`, httpOptions)
+    getIdentification() {
+        return this.http.get(`${this.url + 'getIdentification'}`, httpOptions)
+            .pipe(timeout(3000), map(res => {
+            return res;
+        }), catchError(err => {
+            /*if (err.name === 'TimeoutError') {
+              this.fallback(data);
+            }*/
+            return Observable.throw(err);
+        }));
+    }
+    getOcupations() {
+        return this.http.get(`${this.url + 'getOcupations'}`, httpOptions)
             .pipe(timeout(3000), map(res => {
             return res;
         }), catchError(err => {
@@ -28,10 +39,10 @@ let ClientService = class ClientService {
         }));
     }
 };
-ClientService = tslib_1.__decorate([
+GeneralService = tslib_1.__decorate([
     Injectable({
         providedIn: 'root'
     })
-], ClientService);
-export { ClientService };
-//# sourceMappingURL=client.service.js.map
+], GeneralService);
+export { GeneralService };
+//# sourceMappingURL=general.service.js.map

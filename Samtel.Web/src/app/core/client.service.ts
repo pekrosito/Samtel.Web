@@ -17,7 +17,7 @@ const httpOptions = {
 })
 export class ClientService {
 
-  private url = "http://localhost:2458/v1/client/";
+  private url = "http://localhost:2458/v1/Client/";
 
   constructor(private http: HttpClient) { }
 
