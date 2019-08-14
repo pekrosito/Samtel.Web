@@ -11,13 +11,13 @@ const httpOptions = {
         'X-System': 'Desktop'
     })
 };
-let UserService = class UserService {
+let ClientService = class ClientService {
     constructor(http) {
         this.http = http;
-        this.url = "http://localhost:2458/v1/test";
+        this.url = "http://localhost:2458/v1/client/";
     }
-    getSinVariable() {
-        return this.http.get(`${this.url + '/metodoGetSinVariable'}`, httpOptions)
+    getClients() {
+        return this.http.get(`${this.url + 'getClients'}`, httpOptions)
             .pipe(timeout(3000), map(res => {
             return res;
         }), catchError(err => {
@@ -27,15 +27,11 @@ let UserService = class UserService {
             return Observable.throw(err);
         }));
     }
-    metodoPutActualizar(data) {
-        const url = `${this.url + 'metodoPutActualizar'}`;
-        return this.http.put(url, data, httpOptions);
-    }
 };
-UserService = tslib_1.__decorate([
+ClientService = tslib_1.__decorate([
     Injectable({
         providedIn: 'root'
     })
-], UserService);
-export { UserService };
-//# sourceMappingURL=user.service.js.map
+], ClientService);
+export { ClientService };
+//# sourceMappingURL=client.service.js.map

@@ -15,14 +15,29 @@ const httpOptions = {
 @Injectable({
   providedIn: 'root'
 })
-export class UserService {
-
-  private url = "http://localhost:2458/v1/test";
+export class GeneralService {
+  private url = "http://localhost:2458/v1/general/";
 
   constructor(private http: HttpClient) { }
 
-  getSinVariable(): Observable<any> {
-    return this.http.get<any>(`${this.url + '/metodoGetSinVariable'}`, httpOptions)
+  getIdentifications(): Observable<any> {
+    return this.http.get<any>(`${this.url + 'getIdentifications'}`, httpOptions)
+      .pipe(
+        timeout(3000),
+      map(res => {
+          return res;
+        }),
+        catchError(err => {
+          /*if (err.name === 'TimeoutError') {
+            this.fallback(data);
+          }*/
+          return Observable.throw(err)
+        })
+      );
+  }
+
+  getOcupations(): Observable<any> {
+    return this.http.get<any>(`${this.url + 'getOcupations'}`, httpOptions)
       .pipe(
         timeout(3000),
         map(res => {
@@ -36,10 +51,4 @@ export class UserService {
         })
       );
   }
-
-  metodoPutActualizar(data: any): Observable<any> {
-    const url = `${this.url + 'metodoPutActualizar'}`;
-    return this.http.put<any>(url, data, httpOptions);
-  }
-
 }
