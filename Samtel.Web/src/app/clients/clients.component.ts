@@ -80,7 +80,7 @@ export class ClientsComponent implements OnInit {
     if (this.formClient.invalid) {
       return;
     }
-    this.api.metodoPutEditar(this.formClient.value, this.formClient.value.identificacionCliente).subscribe(
+    this.api.metodoPutActualizar(this.formClient.value).subscribe(
       response => { console.log("Respuesta del metodo Editar", response ) },
       error => { this.notificationsServices.toast("error!"); }
     );

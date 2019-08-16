@@ -20,7 +20,7 @@ export class TablesComponent implements OnInit {
   load() {
     this.getIdentifications((iden) => {
       this.identifications = iden;
-      
+      console.log(iden)
    
     this.getClients((clients) => {
       this.clients = clients;
@@ -33,9 +33,9 @@ export class TablesComponent implements OnInit {
     this.api2.getIdentifications().subscribe(
 
       response => {
-              
+        console.log("Mi objeto de identificación es " + response );
         if (callBack) {
-          console.log("Mi objeto de identificación es " + response);
+          
           return callBack(response)
         }
 

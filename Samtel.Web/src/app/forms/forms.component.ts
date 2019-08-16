@@ -21,13 +21,10 @@ export class FormsComponent implements OnInit {
   }
 
   load() {
-    this.api.getSinVariable().subscribe(
+    this.api.getPersons().subscribe(
 
       response => {
-        response = response.map(users => {
-        users.edad = 1993;
-        return users;
-      });
+        console.log(response);
         this.setData(response);
 
    
@@ -41,8 +38,8 @@ export class FormsComponent implements OnInit {
 
   loadComponent() {
     this.formPerson = this.FB.group({
-      nombre: new FormControl({ value: '', disable: false }, Validators.required),
-      apellido: new FormControl({ value: '', disable: false }, Validators.required)
+      name: new FormControl({ value: '', disable: false }, Validators.required),
+      surname: new FormControl({ value: '', disable: false }, Validators.required)
     })
   }
 
@@ -63,8 +60,8 @@ export class FormsComponent implements OnInit {
   }
 
   setData(response) {
-    this.formPerson.get('nombre').setValue(response[0].nombre);
-    this.formPerson.get('apellido').setValue(response[0].apellido);
+    this.formPerson.get('name').setValue(response[0].name);
+    this.formPerson.get('surname').setValue(response[0].surname);
   }
 
 }

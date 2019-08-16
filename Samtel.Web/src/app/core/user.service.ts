@@ -18,6 +18,7 @@ const httpOptions = {
 export class UserService {
 
   private url = "http://localhost:2458/v1/client/";
+  private url1 = "http://localhost:2458/v1/Person/";
 
   constructor(private http: HttpClient) { }
 
@@ -61,10 +62,10 @@ export class UserService {
     return this.http.put<any>(url, data, httpOptions);
   }
   metodoPutActualizar(data: any): Observable<any> {
-    const url = `${this.url + 'editClient'}`;
+    const url = `${this.url + 'updateClient'}`;
     return this.http.put<any>(url, data, httpOptions);
   }
-  getSinVariable(): Observable<any> {
-    return this.http.get<any>(`${this.url + '/getClients'}`, httpOptions);
+  getPersons(): Observable<any> {
+    return this.http.get<any>(`${this.url1 + 'getPersons'}`, httpOptions);
   }
 }
