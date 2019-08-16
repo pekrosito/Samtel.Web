@@ -258,6 +258,8 @@
     <TypeScriptCompile Include="src\app\clients\clients.component.ts" />
     <TypeScriptCompile Include="src\app\controls\controls.component.spec.ts" />
     <TypeScriptCompile Include="src\app\controls\controls.component.ts" />
+    <TypeScriptCompile Include="src\app\core\general.service.spec.ts" />
+    <TypeScriptCompile Include="src\app\core\general.service.ts" />
     <TypeScriptCompile Include="src\app\core\user.service.spec.ts" />
     <TypeScriptCompile Include="src\app\core\user.service.ts" />
     <TypeScriptCompile Include="src\app\home\home.component.ts" />
